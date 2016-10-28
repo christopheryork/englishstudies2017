@@ -17,7 +17,7 @@ let shorten = function(x, len) {
   return x.slice(0, Math.min(hard, soft))
 }
 
-d3.text('styles.css', (err, styles) => {
+d3.text('repertoire_by_season.css', (err, styles) => {
   if(err) throw err
 
   d3.csv('repertoire_by_season.csv', (err, data) => {
