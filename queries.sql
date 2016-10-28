@@ -14,12 +14,17 @@ COPY (
 -- for matrix of play year vs title
 
 COPY (
-  select cfrp_season(date) as season,
-         title, author,
+  with play_sales as (select * from sales_facts join play_dim ON (play_dim.id IN (play_1_id, play_2_id, play_3_id)) WHERE author <> 'Anonyme'),
+       author_premieres as (select author, cfrp_season(min(date)) as author_premiere_date from play_sales group by author),
+       title_premieres as (select author, title, cfrp_season(min(date)) as title_premiere_date from play_sales group by author, title)
+  select author, title,
+         cfrp_season(date) as season,
          count(distinct date) as performances
-  from sales_facts join play_dim ON (play_dim.id IN (play_1_id, play_2_id, play_3_id))
-  group by author, title, season
-  order by author, title, season
+  from play_sales
+  join author_premieres using (author)
+  join title_premieres using (author, title)
+  group by author, author_premiere_date, title, title_premiere_date, season
+  order by author_premiere_date, author, title_premiere_date, title, season
 ) TO '/tmp/repertoire_by_season.csv' WITH CSV HEADER;
 
 
