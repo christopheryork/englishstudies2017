@@ -1,0 +1,6 @@
+text { font-family: Roboto, sans-serif; font-size: 7.5pt; fill: grey; }
+
+path,
+circle {
+  stroke: black;
+}
