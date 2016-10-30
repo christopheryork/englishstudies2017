@@ -49,8 +49,7 @@ d3.text('repertoire_by_season.css', (err, styles) => {
       .domain([0,columns.size()])
       .range([0,width])
 
-    let svg = d3.select('body')
-      .append('svg')
+    let svg = d3.select('svg')
         .attr('width', width + margins.left + margins.right)
         .attr('height', height + margins.top + margins.bottom)
 

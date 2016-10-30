@@ -36,7 +36,7 @@ d3.text('author_performances.css', (err, styles) => {
       return d3.quantile(data, q, (d) => d.performances )
     })
 
-    let frame = d3.select('body').append('svg')
+    let frame = d3.select('svg')
       .attr('width', width + margins.left + margins.right)
       .attr('height', height + margins.top + margins.bottom)
 
