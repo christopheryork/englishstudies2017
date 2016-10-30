@@ -125,7 +125,7 @@ d3.text('repertoire_by_season.css', (err, styles) => {
 
     let legend = svg.append('g')
       .attr('class', 'legend')
-      .attr('transform', 'translate(' + [width - legend_size.width - legend_size.margin, legend_size.margin] + ')')
+      .attr('transform', 'translate(' + [width - legend_size.width - legend_size.margin, -150 /*legend_size.margin*/] + ')')
 
     legend.append('rect')
       .attr('width', legend_size.width)
@@ -136,7 +136,7 @@ d3.text('repertoire_by_season.css', (err, styles) => {
     let legend_title = legend.append('text')
       .attr('transform', 'translate(' + [ legend_size.padding, legend_size.padding ] + ')')
       .selectAll('tspan')
-        .data(['Repertory', 'of the', 'Comédie-Française', '1680 - 1793'])
+        .data(['Repertory', 'of the', 'Comédie-Française', 'Major Authors', '1680 - 1793'])
         .enter().append('tspan')
           .attr('y', (d,i) => ((i+1) * 1.5) + 'em')
           .attr('x', 0)
