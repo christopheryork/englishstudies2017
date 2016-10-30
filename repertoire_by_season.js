@@ -120,7 +120,7 @@ d3.text('repertoire_by_season.css', (err, styles) => {
 
     // legend
 
-    const legend_size = { width: 250, height: 275, padding: 15, margin: 15 }
+    const legend_size = { width: 320, height: 165, padding: 10, margin: 15 }
     const qtile_height = 15
 
     let legend = svg.append('g')
@@ -144,7 +144,7 @@ d3.text('repertoire_by_season.css', (err, styles) => {
 
     let quantiles = quantile.range()
     let legend_quantiles = legend.append('g')
-      .attr('transform', 'translate(' + [legend_size.margin + legend_size.padding * 2,
+      .attr('transform', 'translate(' + [legend_size.width - 100,
                                          legend_size.margin + legend_size.height - legend_size.padding * 2 - qtile_height * quantile.range().length ] + ')')
       .selectAll('.qtile')
       .data( quantiles )
@@ -160,6 +160,6 @@ d3.text('repertoire_by_season.css', (err, styles) => {
     legend_quantiles.append('text')
       .attr('x', qtile_height + 2)
       .attr('dy', '.8em')
-      .text( (d,i) => quantile.invertExtent(d).join(' - ') + (i === quantiles.length-1 ? ' performances' : '' ))
+      .text( (d,i) => quantile.invertExtent(d).join(' - '))
   })
 })

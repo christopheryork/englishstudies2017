@@ -1,9 +1,0 @@
-# incidental files, never required for check-in
-.DS_Store
-# packaging / dev artifacts
-node_modules
-jspm_packages/
-jspm_packages/*/**
-jspm
-*.svg
-*.png

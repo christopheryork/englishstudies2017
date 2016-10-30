@@ -1,6 +1,6 @@
-text { font-family: Roboto, sans-serif; font-size: 7.5pt; fill: grey; }
+text { font-family: Roboto, sans-serif; font-size: 9pt; fill: grey; }
 
-.legend text { font-size: 17pt; }
+.legend text { font-size: 14pt; }
 .legend .qtile text { font-size: 11pt; }
 
 .q0-5 { fill:rgb(247,251,255); }
