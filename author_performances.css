@@ -4,3 +4,14 @@ path,
 circle {
   stroke: black;
 }
+
+.axis line {
+  opacity: 0.1;
+}
+.axis text {
+  opacity: 0.5;
+}
+
+.axis path {
+  visibility: hidden;
+}

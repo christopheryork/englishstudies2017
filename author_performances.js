@@ -36,14 +36,14 @@ d3.text('author_performances.css', (err, styles) => {
       return d3.quantile(data, q, (d) => d.performances )
     })
 
-    let svg = d3.select('body').append('svg')
+    let frame = d3.select('body').append('svg')
       .attr('width', width + margins.left + margins.right)
       .attr('height', height + margins.top + margins.bottom)
 
-    svg.append('style')
+    frame.append('style')
         .text(styles)
 
-    svg = svg.append('g')
+    let svg = frame.append('g')
         .attr('transform', 'translate(' + [margins.left, margins.top] + ')')
 
     let y = d3.scalePow()
@@ -93,6 +93,21 @@ d3.text('author_performances.css', (err, styles) => {
       .attr('x', (d,i) => (i % 2 ? 1 : -1) * 10)
       .attr('text-anchor', (d,i) => i % 2 ? 'start' : 'end')
       .text( (d) => [shorten(d.author, 10), fmt(d.performances)].join('  '))
+
+    let axis = frame.append('g')
+      .attr('class', 'axis y')
+      .attr('transform', 'translate(' + [0, margins.top] + ')')
+      .call(d3.axisLeft()
+        .scale(y)
+        .ticks(20)
+      )
+
+    axis.selectAll('.tick line')
+      .attr('x1', width + margins.left + margins.right)
+    axis.selectAll('.tick text')
+      .attr('x', 35)
+      .attr('dy', '1.2em')
+      .attr('text-anchor', 'left')
   })
 
 })

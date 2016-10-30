@@ -5,5 +5,5 @@ node_modules
 jspm_packages/
 jspm_packages/*/**
 jspm
-
+*.svg
 *.png
