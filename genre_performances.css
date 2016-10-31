@@ -1,0 +1,13 @@
+text {
+  font-family: Roboto, sans-serif;
+  font-size: 7.5pt;
+  fill: black;
+}
+
+.group-tick line {
+  stroke: #000;
+}
+
+.ribbons {
+  fill-opacity: 0.67;
+}
