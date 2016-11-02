@@ -1,8 +1,8 @@
-default: author_performances.png repertoire_by_season.png
+default: author_performances.png repertoire_by_season.png repertoire_by_season_all.png
 
 %.csv : %.sql
 	psql cfrp_development -f $<
-	cp /tmp/*.csv .
+	mv /tmp/*.csv .
 
 %.png : %.svg %.csv
 	phantomjs ./rasterize.js $< $@
