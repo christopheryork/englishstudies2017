@@ -206,37 +206,100 @@ As seen in the Tukey boxplot we considered first, number of performances is a go
 
 \begin{figure}
   \centering
-	\includegraphics[width=3.5in]{steps/opening.jpg}
+	\includegraphics[width=3.5in]{steps/opening.png}
 	\caption{}
 	\label{fig:opening}
 \end{figure}
 
-Our student decides to take a quick look at how the number of performances varied over the course of the theater’s history.  From the list of available dimensions, she elects to divide the existing result by decades (step 2).  This will give a sense of how performances were distributed through history (step 3).  While this is an obvious—and good—choice, our student could have chosen to drill down into the dataset using any of the other dimensions available: to see which genres were performed more nights, for example, or to find the most (or least) popular play titles by number of performances.
+Our student decides to take a quick look at how the number of performances varied over the course of the theater’s history.  From the list of available dimensions, she elects to divide the existing result by decades (figure \ref{fig:dimensions}).  This will give a sense of how performances were distributed through history (figure \ref{fig:performances_by_decade}).  While this is an obvious—and good—choice, our student could have chosen to drill down into the dataset using any of the other dimensions available: to see which genres were performed more nights, for example, or to find the most (or least) popular play titles by number of performances.
 
-Seeing results in tabular form can be useful, particularly when one delves deep into a particular problem or research question.  A visual presentation gives more immediate meaning to the same set of numbers, however.  From here, we will follow the student as she does exploratory data visualisation using the tool’s graph component, which she accesses by choosing the leftmost results panel (step 4).
+\begin{figure}
+  \centering
+	\includegraphics[width=3.5in]{steps/dimensions.png}
+	\caption{}
+	\label{fig:dimensions}
+\end{figure}
+
+\begin{figure}
+  \centering
+	\includegraphics[width=3.5in]{steps/performances_by_decade.png}
+	\caption{}
+	\label{fig:performances_by_decade}
+\end{figure}
+
+Seeing results in tabular form can be useful, particularly when one delves deep into a particular problem or research question.  A visual presentation gives more immediate meaning to the same set of numbers, however.  From here, we will follow the student as she does exploratory data visualisation using the tool’s graph component, which she accesses by choosing the leftmost results panel (figure \ref{fig:performances_by_decade_graph}).
+
+\begin{figure}
+  \centering
+	\includegraphics[width=3.5in]{steps/performances_by_decade_graph.png}
+	\caption{}
+	\label{fig:performances_by_decade_graph}
+\end{figure}
 
 The graph of number of performances by decade is immediately more suggestive than the table of numbers.  The much lower number of performances in the 1790s immediately stands out, but even more striking is the slight fall in activity at 1720, which is only gradually rises back to its original levels at the turn of the 19th century.  However, our student is immediately struck by the years immediately preceding the French Revolution, when it is clear the theater thrived.  Is it possible, the Comédie Française was involved in and benefited materially from the intellectual and political turmoil of the Enlightenment?
 
 Perhaps this question will become clearer as our student pursues her original interest in the Comédie Française’s prominent authors.  She chooses to divide the current query on performance evenings per decade further, this time by the authors of the plays performed.
 
-She chooses the default option for ``author'' (authorn, explained further below) in the table’s columns.  This generates a table of number of performances for each author, divided by decade.  Because there are 314 columns in this table, it is excerpted in the figure for step 5 (following page).
+She chooses the default option for ``author'' (author\_n, explained further below) in the table’s columns.  This generates a table of number of performances for each author, divided by decade.  Because there are 314 columns in this table, it is excerpted in figure \ref{fig:stitched-author-table}.
+
+\begin{figure*}
+  \centering
+	\includegraphics[width=7.5in]{steps/stitched-author-table.png}
+	\caption{}
+	\label{fig:stitched-author-table}
+\end{figure*}
 
 Subtotals tallied by author appear at the lower margin of the table, and tallied by decade at the right margin; the lower right cell tallies performances for the entire table.  Authors are ordered alphabetically across the top, such that as the user scrolls horizontally, it is possible to detect from visual density of the figures which were the prominent authors, and in which decades.  In this table, for example, Voltaire’s dominance of the repertoire from the 1730s onward is immediately obvious.
 
-Visual inspection only conveys a rough sense of the historical distribution of performances between authors, however.  It would be more helpful to know immediately which were the most- and least-performed authors.  To accomplish this, the student sorts the table by column (author name), as seen in step 6.  Here, we begin to see the outlines of the vital descriptive statistics that John Tukey foregrounded in his boxplot.  As can be seen by comparison with figure \ref{fig:tukey_boxplot}, the sorted crosstab table identifies notable outlier datapoints along a dimension.  From here, our student can begin making interpretive inferences like those we pointed out in our discussion of Tukey’s boxplot: Molière’s central place in the repertoire is immediately obvious, as is the prominence of the other foundational authors like Racine and Corneille right from 1680.  Moreover, some of the phenomena we observed in the custom-tailored heatmap (figure 2) are evident here, but hidden in the boxplot: for example, Voltaire’s gradual rise to fame at 1750, when his importance in the repertoire superceded that of Racine and Corneille together.  (By sorting the table in the opposite order, low-to-high by columns, our student can also explore the least-performed authors, exposing  the fragmentation and churn we noted in the Comédie Française repertoire using Tukey’s boxplot.)
+Visual inspection only conveys a rough sense of the historical distribution of performances between authors, however.  It would be more helpful to know immediately which were the most- and least-performed authors.  To accomplish this, the student sorts the table by column (author name), as seen in figure \ref{fig:sorted}.  Here, we begin to see the outlines of the vital descriptive statistics that John Tukey foregrounded in his boxplot.  As can be seen by comparison with figure \ref{fig:tukey_boxplot}, the sorted crosstab table identifies notable outlier datapoints along a dimension.  From here, our student can begin making interpretive inferences like those we pointed out in our discussion of Tukey’s boxplot: Molière’s central place in the repertoire is immediately obvious, as is the prominence of the other foundational authors like Racine and Corneille right from 1680.  Moreover, some of the phenomena we observed in the custom-tailored heatmap (figure \ref{fig:heatmap}) are evident here, but hidden in the boxplot: for example, Voltaire’s gradual rise to fame at 1750, when his importance in the repertoire superceded that of Racine and Corneille together.  (By sorting the table in the opposite order, low-to-high by columns, our student can also explore the least-performed authors, exposing  the fragmentation and churn we noted in the Comédie Française repertoire using Tukey’s boxplot.)
 
-One of the cardinal advantages of the Tukey boxplot, as we noted, lay in giving a sense both of absolute numbers of performances for each author, as well as how those numbers compared with the body of other authors in the repertoire.  While the table format, with fixed ordinal positions for rows and columns, cannot mimic this graphically, it can convey a sense of the importance of each value within the population of an entire row or column.  Doing this enables our student to compare the relative prominence of high-performed authors to each other, and to the entire population of authors per decade (step 7).  Here she sees her intuitions about the troupe’s dependence on Molière confirmed: fully 28\% of all nights through the run saw the performance of a Molière play (lower-right corner), as against 7.6\% of all nights for Voltaire.  More importantly, she now has a sense of the significance of Voltaire’s rise after 1750: in this and succeeding decades, between 14-16\% percent of all nights involved a performance of one of his plays.  However, decade by decade through Voltaire’s heyday, it becomes clear that Molière plays still formed a higher proportion of the repertoire.  Looking at the top-performed authors as a group makes this conservative phenomenon even further.  The top 6 authors appeared on fully 60-80\% of all nights!
+\begin{figure}
+  \centering
+	\includegraphics[width=3.5in]{steps/sorted.png}
+	\caption{}
+	\label{fig:sorted}
+\end{figure}
+
+One of the cardinal advantages of the Tukey boxplot, as we noted, lay in giving a sense both of absolute numbers of performances for each author, as well as how those numbers compared with the body of other authors in the repertoire.  While the table format, with fixed ordinal positions for rows and columns, cannot mimic this graphically, it can convey a sense of the importance of each value within the population of an entire row or column.  Doing this enables our student to compare the relative prominence of high-performed authors to each other, and to the entire population of authors per decade (step \ref{fig:percents}).  Here she sees her intuitions about the troupe’s dependence on Molière confirmed: fully 28\% of all nights through the run saw the performance of a Molière play (lower-right corner), as against 7.6\% of all nights for Voltaire.  More importantly, she now has a sense of the significance of Voltaire’s rise after 1750: in this and succeeding decades, between 14-16\% percent of all nights involved a performance of one of his plays.  However, decade by decade through Voltaire’s heyday, it becomes clear that Molière plays still formed a higher proportion of the repertoire.  Looking at the top-performed authors as a group makes this conservative phenomenon even further.  The top 6 authors appeared on fully 60-80\% of all nights!
 \marginpar{double check that this works with author-n}
+
+\begin{figure}
+  \centering
+	\includegraphics[width=3.5in]{steps/percents.png}
+	\caption{}
+	\label{fig:percents}
+\end{figure}
 
 Looking back at our student’s progress using cross-tabulations, it is clear her insights are built on three vital features.  First, the ability to divide the dataset by more than one dimension (in this case, by author and time rather than just author).  Second, sorting from high-to-low and low-to-high values on an axis make it easy to locate the top and bottom performers (these are generally Tukey’s statistically-significant outliers).  This enabled our student to identify notable authors without having to scan the entire table. Third, showing computed aggregates ranked as proportion of a row or column of the data gives a sense of how important each value is vis-a-vis its neighbors.  Hence our student could judge the relative prominence not only of Voltaire to Molière, but also each of these authors compared with the unseen collection of all Comédie-Française authors.
 
-Shortcomings of the table format quickly appear, however, if our student moves from comparing authors performances by decade to each other, to comparing authors’ performances rates in one decade to those in others.  When, for example, was the peak in Comédie-Française performances and did it correlate with a particular author?  To begin looking at this question, the student changes the table above to order and calculate percentages within columns rather than rows (step 8).
+Shortcomings of the table format quickly appear, however, if our student moves from comparing authors performances by decade to each other, to comparing authors’ performances rates in one decade to those in others.  When, for example, was the peak in Comédie-Française performances and did it correlate with a particular author?  To begin looking at this question, the student changes the table above to order and calculate percentages within columns rather than rows (figure \ref{fig:percents-incoherent}).
+
+\begin{figure}
+  \centering
+	\includegraphics[width=3.5in]{steps/percents-incoherent.png}
+	\caption{}
+	\label{fig:percents-incoherent}
+\end{figure}
 
 While the display conveys the information our student seeks—which decades saw the most open performances, broken down by author—it feels incoherent, because unlike ``author’s name'', ``time'' has a natural order and we expect to always see data presented in that order, even when seeking minima and maxima.
 
 Discuss line graphs of tables, ordering and selection of top 10 items
 
 Discuss future improvements:  include quantile points
+
+\begin{figure*}
+  \centering
+	\includegraphics[width=7in]{steps/top-author-performances.png}
+	\caption{}
+	\label{fig:top-author-performances}
+\end{figure*}
+
+\begin{figure*}
+  \centering
+	\includegraphics[width=7in]{steps/top-author-receipts.png}
+	\caption{}
+	\label{fig:top-author-receipts}
+\end{figure*}
 
 [ Exposing important features of the statistical landscape: top-n peaks versus Tukey’s boxplot (figures 1 \& 2)
 
@@ -247,6 +310,20 @@ In an article from 1996, ``The Eyes Have It'', Ben Schneiderman introduced his i
 Certainly Scheiderman’s mantra applies to general-purpose use of CFRP’s Crosstab table, as users select data categories, filter or scroll down to particular columns or rows of interest, and mouse over individual table cells to see details of a particular aggregate.  However, the CFRP Crosstab tool was designed to support Schneiderman’s information seeking mantra in a fashion shaped by the particular concerns of humanities research.
 
 The CFRP Crosstab’s calendar function leverages characteristic feature of the Comédie Française registers: with only one performance session per day, the Comédie Française dataset can be arranged to expose the one-to-one correspondence between dates and archival pages.  So, on switching from the table view to the calendar (see figure above), one sees the same data aggregation, but mapped in quantiles by day.  From here one can zoom in on a specific range of days by highlighting them.
+
+\begin{figure}
+  \centering
+	\includegraphics[width=3.5in]{steps/calendar-receipts.png}
+	\caption{}
+	\label{fig:calendar-receipts}
+\end{figure}
+
+\begin{figure}
+  \centering
+	\includegraphics[width=3.5in]{steps/corneille-1680s-receipts.png}
+	\caption{}
+	\label{fig:corneille-1680s-receipts}
+\end{figure}
 
 [ patterns of performance by weekday: genre and comedy / tragedy
 
@@ -259,6 +336,14 @@ More importantly, however, from here the ``details on demand'' pull up individua
 \subsection*{Primary Resource Confirmation: the Register Image Viewer}
 
 References to Martha Howell \& Walter Prevenier, From Reliable Sources...
+
+\begin{figure*}
+  \centering
+	\includegraphics[width=7in]{steps/register-image-corneille.png}
+	\caption{}
+	\label{fig:register-image-corneille}
+\end{figure*}
+
 
 \section*{Heading on level 1 again}
 Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
