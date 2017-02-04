@@ -1,10 +1,15 @@
+cd viz
+make author_performances.pdf
+cd ..
+
 mkdir output
 rm -rf .tmp-compiling
 mkdir .tmp-compiling
+mkdir .tmp-compiling/viz
 
 cd .tmp-compiling
 cp ../main.bib .
-cp ../../viz/*.pdf .
+cp ../viz/*.pdf viz/
 
 pdflatex ../main.tex
 bibtex main
