@@ -2,8 +2,8 @@ performances,author
 9495,Molière (Jean-Baptiste Poquelin dit)
 5168,Dancourt (Florent Carton dit)
 3230,Regnard (Jean-François)
-3097,Racine (Jean)
-2840,Corneille (Pierre)
+3098,Racine (Jean)
+2842,Corneille (Pierre)
 2591,Voltaire (François-Marie Arouet dit)
 2371,Legrand (Marc-Antoine)
 2313,"Hauteroche (Noël Lebreton, sieur de)"
@@ -64,11 +64,11 @@ performances,author
 156,Gresset (Jean-Baptiste-Louis)
 144,"La Tuillerie (Jean-François Juvenon de La Tuillerie, dit)"
 135,Collin d'Harleville (Jean-François)
-129,Ducis (Jean-François)
+127,Ducis (Jean-François)
 124,Diderot (Denis)
-116,Pellegrin (Simon-Joseph)
+117,Pellegrin (Simon-Joseph)
 115,Le Franc de Pompignan (Jean-Jacques)
-114,Guimond de La Touche (Claude)
+113,Guimond de La Touche (Claude)
 110,Poinsinet (Antoine-Alexandre-Henri)
 106,Barthe (Nicolas-Thomas)
 103,"La Noue (Jean-Baptiste Simon Sauvé de La Noue, dit)"
@@ -224,58 +224,57 @@ performances,author
 6,Cordier de Saint-Firmin (Edmond)
 6,"Rowe (Nicholas), auteur / Laplace (Pierre-Antoine de) ou Séran de La Tour (abbé) ou Mauprié (marquis de), traducteur"
 6,Aude (Joseph)
+5,Ferrier de la Martinière (Louis)
 5,Beauregard
-5,Hénault (Charles-Jean-François)
-5,Séguineau (Mr) ; Pralard (René)
-5,Collot d'Herbois
+5,Lebeau de Schosne (Augustin-Théodore-Vincent)
+5,Maillet-Duclairon (Antoine)
 5,Falconnet (Françoise-Cécile) ; Rozet (Madame)
 5,Devaux (François-Antoine)
-5,Colomb de Seillans
-5,Lemercier (Louis-Népomucène)
-5,Lebeau de Schosne (Augustin-Théodore-Vincent)
 5,Gillet de La Tessonerie
-5,Ferrier de la Martinière (Louis)
-5,Mauduit-Larive (Jean)
 5,La Valette
+5,Collot d'Herbois
+5,Séguineau (Mr) ; Pralard (René)
+5,Colomb de Seillans
+5,Mauduit-Larive (Jean)
+5,Lemercier (Louis-Népomucène)
+5,Hénault (Charles-Jean-François)
 5,Lonvay de La Saussaye (Jean-Baptiste)
-5,Maillet-Duclairon (Antoine)
-4,"Carcavy (Charles-Alexandre, abbé)"
+4,Dufrénoy (Adélaïde-Gillette Billet)
+4,Moncrif (François-Augustin Paradis de)
 4,"Launay, De"
+4,Louvet
+4,Moline (Pierre-Louis)
 4,"Saint-Chamond (Claire-Marie Mazarelli, marquise de)"
 4,Saint-Gilles Lenfant (de)
 4,Sauvigny (Edme-Louis Billardon de)
 4,Anonyme 
 4,Desforges (Pierre-Jean-Baptiste Choudard)
-4,Moncrif (François-Augustin Paradis de)
-4,Moline (Pierre-Louis)
-4,Louvet
 4,Fournelle (Jean-Nicolas)
-4,Dufrénoy (Adélaïde-Gillette Billet)
-3,"Longchamp (Charlotte Legrand, épouse Pitel de)"
+4,"Carcavy (Charles-Alexandre, abbé)"
+3,"Bernis (François-Joachim de Pierres, cardinal de)"
+3,"Boyer (Claude, abbé) ; Le Clerc (Michel)"
+3,"Du Roullet (François-Louis Gand Le Bland, bailli)"
 3,Bellecour
+3,Villemain d'Abancourt (François-Jean)
+3,"Longchamp (Charlotte Legrand, épouse Pitel de)"
+3,Avisse (Étienne-François)
 3,Valois d'Orville (Adrien-Joseph de) ; Dubois
-3,Gouges (Olympe de)
 3,Cérou (Pierre)
+3,Gouges (Olympe de)
+3,Riouffé (Honoré)
+3,"Claret de Fleurieu (Aglaé Deslacs, comtesse)"
 3,Dubois-Fontanelle (Joseph-Gaspard)
 3,Molé (François-René)
 3,Chabanon (Michel Paul Guy de)
-3,"Boyer (Claude, abbé) ; Le Clerc (Michel)"
-3,"Du Roullet (François-Louis Gand Le Bland, bailli)"
-3,Riouffé (Honoré)
-3,Villemain d'Abancourt (François-Jean)
-3,Avisse (Étienne-François)
-3,"Bernis (François-Joachim de Pierres, cardinal de)"
-3,"Claret de Fleurieu (Aglaé Deslacs, comtesse)"
-2,Martel
-2,Montauban (Jacques Pousset de)
-2,Pousset de Montauban (Jacques)
-2,Landois (Paul)
-2,Beauharnais (Fanny de)
-2,La Morlière (Jacques Rochette de)
-2,Sablier (Charles)
-2,Peyraud de Beaussol
-2,Alliot
 2,Bonnet de Chemillin (Abbé)
+2,Landois (Paul)
+2,La Morlière (Jacques Rochette de)
+2,Peyraud de Beaussol
+2,Martel
+2,Alliot
+2,Pousset de Montauban (Jacques)
+2,Montauban (Jacques Pousset de)
+2,Sablier (Charles)
 1,Lemercier (Népomucène-Louis)
 1,Montanclos (Marie-Émilie de)
 1,"Montesson (Charlotte-Jeanne Béraud de La Haie de Riou, comtesse de)"
@@ -301,6 +300,7 @@ performances,author
 1,Robert
 1,Ronsin (Charles-Philippe)
 1,Le Noble (Eustache
+1,Beauharnais (Fanny de)
 1,Beaugeard (Jean-Simon Férréol)
 1,Simon (Claude-François)
 1,Simon-Chauvot

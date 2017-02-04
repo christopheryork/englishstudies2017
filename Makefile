@@ -1,12 +1,16 @@
-default: author_performances.png repertoire_by_season.png repertoire_by_season_all.png
+default: author_performances.pdf repertoire_by_season.pdf repertoire_by_season_all.pdf
 
 %.csv : %.sql
 	psql cfrp_development -f $<
 	mv /tmp/*.csv .
 
-%.png : %.svg %.csv
+%.es5.js : %.js
+	babel $< -o $@
+
+%.pdf : %.html %.css %.csv %.es5.js
 	phantomjs ./rasterize.js $< $@
 
-clean:
+clean :
 	rm *.csv
-	rm *.png
+	rm *.es5.js
+	rm *.pdf
