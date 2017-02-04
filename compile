@@ -1,0 +1,17 @@
+mkdir output
+rm -rf .tmp-compiling
+mkdir .tmp-compiling
+
+cd .tmp-compiling
+cp ../main.bib .
+cp ../../viz/*.pdf .
+
+pdflatex ../main.tex
+bibtex main
+pdflatex ../main.tex
+pdflatex ../main.tex
+
+cp main.pdf ../output
+
+cd ..
+rm -rf .tmp-compiling

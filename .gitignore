@@ -1,6 +1,7 @@
 # incidental files, never required for check-in
 .DS_Store
 # packaging / dev artifacts
+output
 node_modules
 *.es5.js
 *.pdf

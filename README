@@ -1,0 +1,3 @@
+# To start:
+
+ls main.{bib,tex} | entr bash compile
