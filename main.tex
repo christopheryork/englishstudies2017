@@ -173,7 +173,7 @@ A digital humanist with specialist skills in statistics and data visualisation, 
 
 Doing so involves comparing any number of different aspects of the dataset in quick succession, digging for suggestive features and large-scale patterns, formulating, testing and rejecting many hypotheses.
 
-The tool works by progressive refinement of the dataset, to expose distributions of the data points across a number of dimensions (listed in the sidebar, right).  Let us follow the prior query through, to show how our student user might use the tool to explore the problem of determining the main authors in the Comédie-Française’s repertoire, their periods and relative importance.  To begin, our student would select an aggregate value of interest: for example, the number of performances; gross receipts; average price of tickets sold; or average receipts per night.
+The tool works by progressive refinement of the dataset, to expose distributions of the data points across a number of dimensions (listed in the sidebar).  Let us follow the prior query through, to show how our student user might use the tool to explore the problem of determining the main authors in the Comédie-Française’s repertoire, their periods and relative importance.  To begin, our student would select an aggregate value of interest: for example, the number of performances; gross receipts; average price of tickets sold; or average receipts per night.
 
 \begin{tcolorbox}
 	\begin{description}
@@ -202,7 +202,14 @@ The tool works by progressive refinement of the dataset, to expose distributions
   \end{description}
 \end{tcolorbox}
 
-As seen in the Tukey boxplot we considered first, number of performances is a good initial metric indicating the prominence of an author in the repertoire.  On choosing this, our student sees the entire dataset aggregated by number of nights performed: over the 114-year period covered by the dataset, the Comédie-Française performed 34,904 nights (step 1, right).  At about 306 live evenings per year (34,904 / 114), this already gives some indication of the theater’s preternatural activity.  Was the Comédie Française pressed to maintain profitability by keeping its doors open and attendance consistently high, a stress familiar to 20th century theater owners?  Our student investigator does not know; but already a field of questions is opening up that supplements her initial interest in repertoire.  What role did prominent authors play in maintaining the Comédie Française’s yearly schedule?
+As seen in the Tukey boxplot we considered first, number of performances is a good initial metric indicating the prominence of an author in the repertoire.  On choosing this, our student sees the entire dataset aggregated by number of nights performed: over the 114-year period covered by the dataset, the Comédie-Française performed 34,904 nights (figure \ref{fig:opening}).  At about 306 live evenings per year (34,904 / 114), this already gives some indication of the theater’s preternatural activity.  Was the Comédie Française pressed to maintain profitability by keeping its doors open and attendance consistently high, a stress familiar to 20th century theater owners?  Our student investigator does not know; but already a field of questions is opening up that supplements her initial interest in repertoire.  What role did prominent authors play in maintaining the Comédie Française’s yearly schedule?
+
+\begin{figure}
+  \centering
+	\includegraphics[width=3.5in]{steps/opening.jpg}
+	\caption{}
+	\label{fig:opening}
+\end{figure}
 
 Our student decides to take a quick look at how the number of performances varied over the course of the theater’s history.  From the list of available dimensions, she elects to divide the existing result by decades (step 2).  This will give a sense of how performances were distributed through history (step 3).  While this is an obvious—and good—choice, our student could have chosen to drill down into the dataset using any of the other dimensions available: to see which genres were performed more nights, for example, or to find the most (or least) popular play titles by number of performances.
 

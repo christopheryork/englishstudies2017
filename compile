@@ -6,10 +6,12 @@ mkdir output
 rm -rf .tmp-compiling
 mkdir .tmp-compiling
 mkdir .tmp-compiling/viz
+mkdir .tmp-compiling/steps
 
 cd .tmp-compiling
 cp ../main.bib .
 cp ../viz/*.pdf viz/
+cp ../steps/* steps/
 
 pdflatex ../main.tex
 bibtex main
