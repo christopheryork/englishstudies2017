@@ -1,5 +1,5 @@
 cd viz
-make author_performances.pdf
+make default
 cd ..
 
 mkdir output
