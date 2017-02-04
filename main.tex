@@ -25,6 +25,7 @@
 
 \usepackage[utf8]{inputenc}                 % Unicode input
 
+\usepackage{tcolorbox}
 
 %%% Custom sectioning (sectsty package)
 \usepackage{sectsty}													% Custom sectioning (see below)
@@ -104,6 +105,7 @@ Boilerplate info on the CF and the CFRP: who, what, why, how.
 
 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies
 
+
 \subsection*{Exploratory Data Analysis and Data Visualization}
 
 Imagine a student, perhaps in an undergraduate class on theater history, who uses the tool to explore the Comédie-Francaise Registers dataset while writing a paper. The student may have some background knowledge from an introductory lecture.  She knows that Louis XIV issued a royal decree founding the Comédie-Française in August 1680, that together with the Comédie Italienne and the Opéra the troupe occupied a central place in French stage tradition, closely associated with the foundational figures of Molière and Racine, and notable for its close association with the French court.  She may have privately noted a contrast between English Restoration theater’s fragmentation and the Comédie-Française’s remarkable institutional persistence and continuity, offering performances every season from founding, throughout the upheaval of the French Revolution and into the 21st century.
@@ -129,13 +131,41 @@ The striking success of Tukey’s visualisation lies in its balance between conv
 
 Against the boxplot’s virtues, one can balance a number of demerits.  It is visually unsatisfying, rich in statistical implications but poor in visual detail that encourages users to look up new facts in a known resource.  Its very flexibility—we could be researching the distribution of genres, the profitability of individual plays, or variations in ticket price—begs for a visualisation tailored to the Comédie-Française alone.
 
-Let us follow our hypothetical student to explore the top-performed Comédie-Française authors using a purpose-built visualisation for analysing repertoire (see figure 2).  For each play by the 10 authors whose work was performed by the Comédie-Française more than 1,200 nights, this graph marks the number of performances per year onward from the premiere in a vertical line.  Stark differences in authorial profile and professional trajectory appear, which the previous graph had glossed over.  It becomes clear how dependent the Comédie-Française was on a canon of work already established before the formation of the troupe.  Of the authors whose plays were revived consistently, year on year through the troupe’s history, the lion’s share appear in the pivotal 1680-81 season: a large body of work by Molière, Pierre Corneille and Racine (at left).  Only Jean-François Regnard, gambler, adventurer and former slave turned playwright, was able to consistently introduce new hit plays that were revived year-on-year.  Voltaire, it becomes clear by comparison, only hit his stride in mid-career with Zaïre in 1732; his later plays languished, premiered but un-revived.
+Let us follow our hypothetical student to explore the top-performed Comédie-Française authors using a purpose-built visualisation for analysing repertoire (see figure
+\ref{fig:heatmap}).  For each play by the 10 authors whose work was performed by the Comédie-Française more than 1,200 nights, this graph marks the number of performances per year onward from the premiere in a vertical line.  Stark differences in authorial profile and professional trajectory appear, which the previous graph had glossed over.  It becomes clear how dependent the Comédie-Française was on a canon of work already established before the formation of the troupe.  Of the authors whose plays were revived consistently, year on year through the troupe’s history, the lion’s share appear in the pivotal 1680-81 season: a large body of work by Molière, Pierre Corneille and Racine (at left).  Only Jean-François Regnard, gambler, adventurer and former slave turned playwright, was able to consistently introduce new hit plays that were revived year-on-year.  Voltaire, it becomes clear by comparison, only hit his stride in mid-career with Zaïre in 1732; his later plays languished, premiered but un-revived.
+
+\begin{figure*}
+  \centering
+	\includegraphics[width=10in,angle=270]{viz/repertoire_by_season.pdf}
+	\caption{}
+  \label{fig:heatmap}
+\end{figure*}
 
 From a purpose-built visualisation such as this, our hypothetical student might make any number of observations that open doors into individual authors’ professional careers.  Pierre Corneille’s frustrated later-life failures are clearly visible; as is Dancourt’s unique authorial signature as a fount of works consistently premiered year on year, yet only intermittently canonised.  Likewise, Abraham-Alexis Quinault’s (also known as Dufresne) status as the one-hit wonder author of Esprit de Contradiction is confirmed.  More subtly, one sees the gradual shift in taste away from classical models, from Molière’s singular dominance of repertory through 1720, to a more tepid (but consistent) series of revivals after 1750—just as Voltaire’s work achieved dominance.
 
 The heatmap’s visual richness and usefulness for investigating authorial history hide faults that make it quite unsuitable for exploratory data analysis.  As noted above, a cardinal virtue of the author performance boxplot was balance between giving a sense of the ``landscape'' of all authors’ performance histories while simultaneously singling out notable features: ten particularly well-performed authors.  The heatmap’s balance of dark and light suggests similar reading—but deceptively.  Because it does not include all plays performed through the 113-year sequence of the Comédie-Française dataset, it gives little sense of why these are of particular interest: where, how many, and what characterised the unsuccessful authors.  It is a picture of some tall trees in isolation from the surrounding forest.  One might think that including every play and ordering them in sequence chronologically by premiere would counteract this (see figure below for an excerpt from 17xx-17yy).  While it does accurately suggest the balance between often-performed plays dating from the years of the troupe’s founding and rarely-revived plays that premiered later, to see this effect we must order by the year each play’s premiere and so lose the grouping by author.  Some of the most important features of the dataset disappear: for example, Voltaire’s dominance of the post-1730 repertoire is completely hidden, since his successful plays are scattered among many less-successful ones by other authors.
 
+\begin{figure*}
+  \centering
+	\includegraphics[width=6.5in]{viz/repertoire_by_season_all.pdf}
+	\caption{}
+  \label{fig:heatmap_all}
+\end{figure*}
+
 Perhaps more damning, a repertoire heatmap above is a special purpose visualisation, crafted to expose a fixed set of patterns but difficult to adapt to other categories of analysis.  Changing it to look at the genre of plays performed over time, or variations of what is played during a week, would basically require starting over with a novel programming task.  By contrast, during the process of exploratory data analysis, users are likely to want to experiment with many different aggregations and graphs in a short period of time—for example, to see ``were plays of a different genre performed in later decades?'' or ``were different weekdays associated with different genres?''  Despite involving the same variables—time and genre of play performed—these two questions lend themselves to different analyses and graphs.  This is because ``decade of performance'' is a linear and continuous aspect of the data, while ``weekday of performance'' is cyclical and discrete.
+
+\begin{tcolorbox}
+	\begin{enumerate}
+	  \item Voltaire: isolate all his comedies, or all his tragedies, across the six decades of his career at the CF. Compare attendance and receipt figures. Break that data down by decades, and compare pareterre totals in the 1730s and 1770s. Chart the days of the week on which his comedies were played across these decades versus days of the week for his tragedies. Analyze which plays the actors chose to accompany his comedies, versus which they chose to accompany his tragedies.
+
+		\item Search on attendance figures for Racine and Corneille's tragedies from 1680 through 1793, then compare them to similar figures for Voltaire's tragedies. Does Voltaire's rising popularity change the status of the older classical tragic authors in the repertory over the eighteenth century?
+
+	  \item Study parterre attendance across the 113 years. What are the highs and the lows? How do the figures change as the troupe changes performance venues? Is there a correlation between parterre attendance (cheapest tickets), and first loge and stage seats (most expensive)? Is it an inverse correlation? Do the figures correlate to genre of the play being performed?
+
+	  \item What is the relationship of number of attendees and box office receipts? Does higher attendance always mean greater revenues? If not, how do we analyze receipts across the period to understand what determined profitability? to determine popularity? Among these factors, what is the relative importance of day of the week? Plays being performed? First run of a play? Debut of a new actor or actress? King, Queen, or other luminary in the audience?
+  \end{enumerate}
+  \hfill —questions courtesy of Jeff Ravel (MIT)
+\end{tcolorbox}
 
 \subsection*{Goal and Design Constraints: General vs Special-Purpose Tools}
 
@@ -144,6 +174,33 @@ A digital humanist with specialist skills in statistics and data visualisation, 
 Doing so involves comparing any number of different aspects of the dataset in quick succession, digging for suggestive features and large-scale patterns, formulating, testing and rejecting many hypotheses.
 
 The tool works by progressive refinement of the dataset, to expose distributions of the data points across a number of dimensions (listed in the sidebar, right).  Let us follow the prior query through, to show how our student user might use the tool to explore the problem of determining the main authors in the Comédie-Française’s repertoire, their periods and relative importance.  To begin, our student would select an aggregate value of interest: for example, the number of performances; gross receipts; average price of tickets sold; or average receipts per night.
+
+\begin{tcolorbox}
+	\begin{description}
+		\item[Dimensions]
+			- play
+			- author
+			- title
+			- acts
+			- genre
+			- style: prose or verse -...
+			- performance
+			- debut, reprise, firstrun, new actor/role
+			- seating category -...
+
+		\item[Facts]
+			- date
+			- number of tickets sold
+			- price per ticket
+
+		\item[Measures]
+			- number of nights / performances
+			- gross ticket receipts
+			- mean ticket receipts per night
+			- mean price per ticket sold
+			- weighted ticket receipts
+  \end{description}
+\end{tcolorbox}
 
 As seen in the Tukey boxplot we considered first, number of performances is a good initial metric indicating the prominence of an author in the repertoire.  On choosing this, our student sees the entire dataset aggregated by number of nights performed: over the 114-year period covered by the dataset, the Comédie-Française performed 34,904 nights (step 1, right).  At about 306 live evenings per year (34,904 / 114), this already gives some indication of the theater’s preternatural activity.  Was the Comédie Française pressed to maintain profitability by keeping its doors open and attendance consistently high, a stress familiar to 20th century theater owners?  Our student investigator does not know; but already a field of questions is opening up that supplements her initial interest in repertoire.  What role did prominent authors play in maintaining the Comédie Française’s yearly schedule?
 
@@ -173,7 +230,6 @@ While the display conveys the information our student seeks—which decades saw 
 Discuss line graphs of tables, ordering and selection of top 10 items
 
 Discuss future improvements:  include quantile points
-
 
 [ Exposing important features of the statistical landscape: top-n peaks versus Tukey’s boxplot (figures 1 \& 2)
 
