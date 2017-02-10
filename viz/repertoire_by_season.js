@@ -52,9 +52,9 @@ d3.csv('repertoire_by_season.csv', (err, data) => {
   svg = svg.append('g')
       .attr('transform', 'translate(' + [margins.left, margins.top] + ')')
 
-  let quantile = d3.scaleQuantile()
-    .range(d3.range(5).map(function(i) { return "q" + i + "-5"; }))
-    .domain(data.map( (d) => d.performances).sort())
+  let threshold = d3.scaleThreshold()
+      .range(["#6e7c5a", "#a0b28f", "#d8b8b3", "#b45554", "#760000"])
+      .domain([2,5,10,15])
 
   let y_ticks = svg.append('g')
     .selectAll('text')
@@ -70,7 +70,7 @@ d3.csv('repertoire_by_season.csv', (err, data) => {
     .selectAll('circle')
       .data(data)
       .enter().append('circle')
-        .attr('class', (d) => quantile(d.performances))
+        .attr('fill', (d) => threshold(d.performances))
         .attr('transform', (d) => 'translate(' + [x(d.index), y(+d.season.split('-')[0])] + ')')
         .attr('r', radius)
         .append('title')
@@ -113,7 +113,7 @@ d3.csv('repertoire_by_season.csv', (err, data) => {
 
   // legend
 
-  const legend_size = { width: 320, height: 110, padding: 10, margin: 15 }
+  const legend_size = { width: 320, height: 180, padding: 10, margin: 15 }
   const qtile_height = 15
 
   let legend = svg.append('g')
@@ -132,26 +132,47 @@ d3.csv('repertoire_by_season.csv', (err, data) => {
       .data(['CF Repertory', 'Major Authors', '1680 - 1793'])
       .enter().append('tspan')
         .attr('y', (d,i) => ((i+1) * 1.5) + 'em')
-        .attr('x', 0)
+        .attr('x', 20)
         .text( (d) => d )
 
-  let quantiles = quantile.range()
-  let legend_quantiles = legend.append('g')
-    .attr('transform', 'translate(' + [legend_size.width - 100,
-                                       legend_size.margin + legend_size.height - legend_size.padding * 2 - qtile_height * quantile.range().length ] + ')')
-    .selectAll('.qtile')
-    .data( quantiles )
-      .enter().append('g')
-        .attr('class', 'qtile')
-        .attr('transform', (d,i) => 'translate(0,' + qtile_height * i +')')
+  let formatPercent = d3.format(".0%")
+  let formatNumber = d3.format(".0f")
 
-  legend_quantiles.append('circle')
-    .attr('class', (d) => d )
-    .attr('cy', qtile_height / 2)
-    .attr('r', qtile_height / 2 - 2)
+  let max = d3.max(data, (d) => d.performances)
+  var legend_x = d3.scaleLinear()
+      .domain([1, max])
+      .range([0, 280]);
 
-  legend_quantiles.append('text')
-    .attr('x', qtile_height + 2)
-    .attr('dy', '.8em')
-    .text( (d,i) => quantile.invertExtent(d).join(' - '))
+  var xAxis = d3.axisBottom(legend_x)
+      .tickSize(15)
+      .tickValues(threshold.domain().concat([d3.max(data, (d) => d.performances)]))
+      .tickFormat(function(d) { return formatNumber(d) });
+
+  var g = legend.append("g")
+            .attr('class', 'axis')
+            .attr('transform', 'translate(15,130)')
+            .call(xAxis);
+
+  g.select(".domain")
+      .remove();
+
+  g.selectAll("rect")
+    .data(threshold.range().map(function(color) {
+      var d = threshold.invertExtent(color);
+      if (d[0] == null) d[0] = legend_x.domain()[0];
+      if (d[1] == null) d[1] = legend_x.domain()[1];
+      return d;
+    }))
+    .enter().insert("rect", ".tick")
+      .attr("height", 8)
+      .attr("x", function(d) { return legend_x(d[0]); })
+      .attr("width", function(d) { return legend_x(d[1]) - legend_x(d[0]); })
+      .attr("fill", function(d) { return threshold(d[0]); });
+
+  g.append("text")
+      .attr("fill", "#000")
+      .attr("font-size", '10pt')
+      .attr("text-anchor", "start")
+      .attr("y", -6)
+      .text("Performances per season");
 })

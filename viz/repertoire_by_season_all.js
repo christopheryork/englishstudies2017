@@ -1,6 +1,6 @@
 const radius = 1.5
 
-const margins = { left: 65, top: 200, right: 0, bottom: 0 }
+const margins = { left: 85, top: 200, right: 20, bottom: 20 }
 
 d3.csv('repertoire_by_season_all.csv', (err, data) => {
   if(err) throw err
@@ -36,9 +36,9 @@ d3.csv('repertoire_by_season_all.csv', (err, data) => {
   svg = svg.append('g')
       .attr('transform', 'translate(' + [margins.left, margins.top] + ')')
 
-  let quantile = d3.scaleQuantile()
-    .range(d3.range(5).map(function(i) { return "q" + i + "-5"; }))
-    .domain(data.map( (d) => d.performances).sort())
+  let threshold = d3.scaleThreshold()
+      .range(["#6e7c5a", "#a0b28f", "#d8b8b3", "#b45554", "#760000"])
+      .domain([2,5,10,15])
 
   let y_ticks = svg.append('g')
     .selectAll('text')
@@ -54,7 +54,7 @@ d3.csv('repertoire_by_season_all.csv', (err, data) => {
     .selectAll('circle')
       .data(data)
       .enter().append('circle')
-        .attr('class', (d) => quantile(d.performances))
+        .attr('fill', (d) => threshold(d.performances))
         .attr('transform', (d) => 'translate(' + [x(d.author+d.title), y(+d.season.split('-')[0])] + ')')
         .attr('r', radius)
         .append('title')
