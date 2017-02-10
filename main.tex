@@ -26,6 +26,7 @@
 \usepackage[utf8]{inputenc}                 % Unicode input
 
 \usepackage{tcolorbox}
+\usepackage{enumitem}
 
 %%% Custom sectioning (sectsty package)
 \usepackage{sectsty}													% Custom sectioning (see below)
@@ -79,14 +80,14 @@
 \pretitle{\vspace{-30pt} \begin{flushleft} \HorRule
 				\fontsize{50}{50} \usefont{OT1}{phv}{b}{n} \color{DarkRed} \selectfont
 				}
-\title{Exploratory data analytics for the Digital Humanities}					% Title of your article goes here
+\title{Exploratory data analytics for the Digital humanities}					% Title of your article goes here
 \posttitle{\par\end{flushleft}\vskip 0.5em}
 
 \preauthor{\begin{flushleft}
 					\large \lineskip 0.5em \usefont{OT1}{phv}{b}{sl} \color{DarkRed}}
-\author{Christopher York, }											% Author name goes here
+\author{Christopher York, }										% Author name goes here
 \postauthor{\footnotesize \usefont{OT1}{phv}{m}{sl} \color{Black}
-					Yale University 								% Institution of author
+          Yale University 								  % Institution of author
 					\par\end{flushleft}\HorRule}
 %%end novalidate
 \date{}																				% No date
@@ -115,7 +116,7 @@ However, beyond this rough outline the overall shape of the Comédie-Française 
 \begin{figure}
   \centering
   \includegraphics[height=9in]{viz/author_performances.pdf}
-	\caption{Major authors by number of evenings performed}
+	\caption{Comédie Française authors by number of evenings performed}
   \label{fig:tukey_boxplot}
 \end{figure}
 
@@ -143,19 +144,22 @@ Let us follow our hypothetical student to explore the top-performed Comédie-Fra
 
 From a purpose-built visualisation such as this, our hypothetical student might make any number of observations that open doors into individual authors’ professional careers.  Pierre Corneille’s frustrated later-life failures are clearly visible; as is Dancourt’s unique authorial signature as a fount of works consistently premiered year on year, yet only intermittently canonised.  Likewise, Abraham-Alexis Quinault’s (also known as Dufresne) status as the one-hit wonder author of Esprit de Contradiction is confirmed.  More subtly, one sees the gradual shift in taste away from classical models, from Molière’s singular dominance of repertory through 1720, to a more tepid (but consistent) series of revivals after 1750—just as Voltaire’s work achieved dominance.
 
-The heatmap’s visual richness and usefulness for investigating authorial history hide faults that make it quite unsuitable for exploratory data analysis.  As noted above, a cardinal virtue of the author performance boxplot was balance between giving a sense of the ``landscape'' of all authors’ performance histories while simultaneously singling out notable features: ten particularly well-performed authors.  The heatmap’s balance of dark and light suggests similar reading—but deceptively.  Because it does not include all plays performed through the 113-year sequence of the Comédie-Française dataset, it gives little sense of why these are of particular interest: where, how many, and what characterised the unsuccessful authors.  It is a picture of some tall trees in isolation from the surrounding forest.  One might think that including every play and ordering them in sequence chronologically by premiere would counteract this (see figure below for an excerpt from 17xx-17yy).  While it does accurately suggest the balance between often-performed plays dating from the years of the troupe’s founding and rarely-revived plays that premiered later, to see this effect we must order by the year each play’s premiere and so lose the grouping by author.  Some of the most important features of the dataset disappear: for example, Voltaire’s dominance of the post-1730 repertoire is completely hidden, since his successful plays are scattered among many less-successful ones by other authors.
+The heatmap’s visual richness and usefulness for investigating authorial history hide faults that make it quite unsuitable for exploratory data analysis.  As noted above, a cardinal virtue of the author performance boxplot was balance between giving a sense of the ``landscape'' of all authors’ performance histories while simultaneously singling out notable features: ten particularly well-performed authors.  The heatmap’s balance of dark and light suggests similar reading—but deceptively.  Because it does not include all plays performed through the 113-year sequence of the Comédie-Française dataset, it gives little sense of why these are of particular interest: where, how many, and what characterised the unsuccessful authors.  It is a picture of some tall trees in isolation from the surrounding forest.  One might think that including every play and ordering them in sequence chronologically by premiere would counteract this (see figure \ref{fig:heatmap_all}).  While it does accurately suggest the balance between often-performed plays dating from the years of the troupe’s founding and rarely-revived plays that premiered later, to see this effect we must order by the year each play’s premiere and so lose the grouping by author.  Some of the most important features of the dataset disappear: for example, Voltaire’s dominance of the post-1730 repertoire is completely hidden, since his successful plays are scattered among many less-successful ones by other authors.
 
-\begin{figure*}
+\begin{figure}
   \centering
-	\includegraphics[width=6.5in]{viz/repertoire_by_season_all.pdf}
-	\caption{}
+	\includegraphics[width=9.5in,angle=270]{viz/repertoire_by_season_all.pdf}
+	\caption{The complete CF repertory
+	         \newline
+	         (Limitations of a special-purpose visualisation)}
   \label{fig:heatmap_all}
-\end{figure*}
+\end{figure}
 
-Perhaps more damning, a repertoire heatmap above is a special purpose visualisation, crafted to expose a fixed set of patterns but difficult to adapt to other categories of analysis.  Changing it to look at the genre of plays performed over time, or variations of what is played during a week, would basically require starting over with a novel programming task.  By contrast, during the process of exploratory data analysis, users are likely to want to experiment with many different aggregations and graphs in a short period of time—for example, to see ``were plays of a different genre performed in later decades?'' or ``were different weekdays associated with different genres?''  Despite involving the same variables—time and genre of play performed—these two questions lend themselves to different analyses and graphs.  This is because ``decade of performance'' is a linear and continuous aspect of the data, while ``weekday of performance'' is cyclical and discrete.
+Perhaps more damning, the repertoire heatmap above is a special purpose visualisation, crafted to expose a fixed set of patterns but difficult to adapt to other categories of analysis.  Changing it to look at the genre of plays performed over time, or variations of what is played during a week, would basically require starting over with a novel programming task.  By contrast, during the process of exploratory data analysis, users are likely to want to experiment with many different aggregations and graphs in a short period of time—for example, to see ``were plays of a different genre performed in later decades?'' or ``were different weekdays associated with different genres?''  Despite involving the same variables—time and genre of play performed—these two questions lend themselves to different analyses and graphs.  This is because ``decade of performance'' is a linear and continuous aspect of the data, while ``weekday of performance'' is cyclical and discrete.
 
 \begin{tcolorbox}
-	\begin{enumerate}
+  \fontsize{9pt}{9pt}\selectfont
+	\begin{enumerate}[align=left]
 	  \item Voltaire: isolate all his comedies, or all his tragedies, across the six decades of his career at the CF. Compare attendance and receipt figures. Break that data down by decades, and compare pareterre totals in the 1730s and 1770s. Chart the days of the week on which his comedies were played across these decades versus days of the week for his tragedies. Analyze which plays the actors chose to accompany his comedies, versus which they chose to accompany his tragedies.
 
 		\item Search on attendance figures for Racine and Corneille's tragedies from 1680 through 1793, then compare them to similar figures for Voltaire's tragedies. Does Voltaire's rising popularity change the status of the older classical tragic authors in the repertory over the eighteenth century?
@@ -176,29 +180,30 @@ Doing so involves comparing any number of different aspects of the dataset in qu
 The tool works by progressive refinement of the dataset, to expose distributions of the data points across a number of dimensions (listed in the sidebar).  Let us follow the prior query through, to show how our student user might use the tool to explore the problem of determining the main authors in the Comédie-Française’s repertoire, their periods and relative importance.  To begin, our student would select an aggregate value of interest: for example, the number of performances; gross receipts; average price of tickets sold; or average receipts per night.
 
 \begin{tcolorbox}
-	\begin{description}
+	\fontsize{9pt}{9pt}\selectfont
+  \begin{description}[noitemsep,align=left]
 		\item[Dimensions]
-			- play
-			- author
-			- title
-			- acts
-			- genre
-			- style: prose or verse -...
-			- performance
-			- debut, reprise, firstrun, new actor/role
-			- seating category -...
+			\item play
+			\item author
+			\item title
+			\item acts
+			\item genre
+			\item style: prose or verse
+			\item performance
+			\item debut, reprise, firstrun, new actor/role
+			\item seating category
 
 		\item[Facts]
-			- date
-			- number of tickets sold
-			- price per ticket
+			\item date
+			\item number of tickets sold
+			\item price per ticket
 
 		\item[Measures]
-			- number of nights / performances
-			- gross ticket receipts
-			- mean ticket receipts per night
-			- mean price per ticket sold
-			- weighted ticket receipts
+			\item number of nights / performances
+			\item gross ticket receipts
+			\item mean ticket receipts per night
+			\item mean price per ticket sold
+			\item weighted ticket receipts
   \end{description}
 \end{tcolorbox}
 
@@ -244,7 +249,7 @@ She chooses the default option for ``author'' (author\_n, explained further belo
 
 \begin{figure*}
   \centering
-	\includegraphics[width=7.5in]{steps/stitched-author-table.png}
+	\includegraphics[width=7in]{steps/stitched-author-table.png}
 	\caption{}
 	\label{fig:stitched-author-table}
 \end{figure*}
@@ -263,12 +268,12 @@ Visual inspection only conveys a rough sense of the historical distribution of p
 One of the cardinal advantages of the Tukey boxplot, as we noted, lay in giving a sense both of absolute numbers of performances for each author, as well as how those numbers compared with the body of other authors in the repertoire.  While the table format, with fixed ordinal positions for rows and columns, cannot mimic this graphically, it can convey a sense of the importance of each value within the population of an entire row or column.  Doing this enables our student to compare the relative prominence of high-performed authors to each other, and to the entire population of authors per decade (step \ref{fig:percents}).  Here she sees her intuitions about the troupe’s dependence on Molière confirmed: fully 28\% of all nights through the run saw the performance of a Molière play (lower-right corner), as against 7.6\% of all nights for Voltaire.  More importantly, she now has a sense of the significance of Voltaire’s rise after 1750: in this and succeeding decades, between 14-16\% percent of all nights involved a performance of one of his plays.  However, decade by decade through Voltaire’s heyday, it becomes clear that Molière plays still formed a higher proportion of the repertoire.  Looking at the top-performed authors as a group makes this conservative phenomenon even further.  The top 6 authors appeared on fully 60-80\% of all nights!
 \marginpar{double check that this works with author-n}
 
-\begin{figure}
+\begin{figure*}
   \centering
-	\includegraphics[width=3.5in]{steps/percents.png}
+	\includegraphics[width=7in]{steps/percents.png}
 	\caption{}
 	\label{fig:percents}
-\end{figure}
+\end{figure*}
 
 Looking back at our student’s progress using cross-tabulations, it is clear her insights are built on three vital features.  First, the ability to divide the dataset by more than one dimension (in this case, by author and time rather than just author).  Second, sorting from high-to-low and low-to-high values on an axis make it easy to locate the top and bottom performers (these are generally Tukey’s statistically-significant outliers).  This enabled our student to identify notable authors without having to scan the entire table. Third, showing computed aggregates ranked as proportion of a row or column of the data gives a sense of how important each value is vis-a-vis its neighbors.  Hence our student could judge the relative prominence not only of Voltaire to Molière, but also each of these authors compared with the unseen collection of all Comédie-Française authors.
 
@@ -301,7 +306,7 @@ Discuss future improvements:  include quantile points
 	\label{fig:top-author-receipts}
 \end{figure*}
 
-[ Exposing important features of the statistical landscape: top-n peaks versus Tukey’s boxplot (figures 1 \& 2)
+[ Exposing important features of the statistical landscape: top-n peaks versus Tukey’s boxplot (figure \ref{fig:tukey_boxplot})
 
 \subsection*{Drill-down: calendar}
 
@@ -309,27 +314,27 @@ In an article from 1996, ``The Eyes Have It'', Ben Schneiderman introduced his i
 
 Certainly Scheiderman’s mantra applies to general-purpose use of CFRP’s Crosstab table, as users select data categories, filter or scroll down to particular columns or rows of interest, and mouse over individual table cells to see details of a particular aggregate.  However, the CFRP Crosstab tool was designed to support Schneiderman’s information seeking mantra in a fashion shaped by the particular concerns of humanities research.
 
-The CFRP Crosstab’s calendar function leverages characteristic feature of the Comédie Française registers: with only one performance session per day, the Comédie Française dataset can be arranged to expose the one-to-one correspondence between dates and archival pages.  So, on switching from the table view to the calendar (see figure above), one sees the same data aggregation, but mapped in quantiles by day.  From here one can zoom in on a specific range of days by highlighting them.
+The CFRP Crosstab’s calendar function leverages characteristic feature of the Comédie Française registers: with only one performance session per day, the Comédie Française dataset can be arranged to expose the one-to-one correspondence between dates and archival pages.  So, on switching from the table view to the calendar (see figure \ref{fig:calendar-receipts}), one sees the same data aggregation, but mapped in quantiles by day.  From here one can zoom in on a specific range of days by highlighting them.
 
 \begin{figure}
   \centering
 	\includegraphics[width=3.5in]{steps/calendar-receipts.png}
-	\caption{}
+	\caption{Daily receipts: All evenings}
 	\label{fig:calendar-receipts}
 \end{figure}
 
 \begin{figure}
   \centering
 	\includegraphics[width=3.5in]{steps/corneille-1680s-receipts.png}
-	\caption{}
+	\caption{Daily receipts: Evenings when a play by Corneille was performed}
 	\label{fig:corneille-1680s-receipts}
 \end{figure}
 
 [ patterns of performance by weekday: genre and comedy / tragedy
 
-Simultaneously, the calendar enables users to take one step away from aggregate values towards the physical sources, by breaking each cell in the crosstab table into days.  For example, (see figure below…)
+Simultaneously, the calendar enables users to take one step away from aggregate values towards the physical sources, by breaking each cell in the crosstab table into days.  For example, (see figure \ref{fig:calendar-receipts}).
 
-[ drill-down on individual cells in the table of crosstab results: 1680s Pierre Corneille receipts
+[ drill-down on individual cells in the table of crosstab results: 1680s Pierre Corneille receipts (figure \ref{fig:corneille-1680s-receipts})
 
 More importantly, however, from here the ``details on demand'' pull up individual archival pages for the performance session on a given day.  This allows the user to confirm computer analyses by direct inspection of archival sources...
 
@@ -369,7 +374,22 @@ DH datasets demand foreign expertise
 DH datasets mismatch established business models for data
   [ analysis of receipts data: line-item information on modern receipts versus multiple bills (in CF and studio-system Hollywood)
 
-...
+\section*{Conclusion}
+
+My aims in this paper have been as follows.
+
+First, to describe the workings of a generalist suite of open-ended tools for analyzing humanities data sets associated with an important historical literary institution.  I described the rationale for including the specific tools in our project, and walked through several characteristic paths an undergraduate student might take as she first surveyed the landscape, then drilled deeply into a particular vein of data.
+
+A repeated theme along the way has been the tension between tools that enable users to answer a particular question using \textbf{data analysis} - ``did Voltaire's comedies or his tragedies gross more in the 1760s?'' - versus those that enable \textbf{data analytics} - ``what are notable features relating to play genre?''  In the former case, the subject expert uses digital research tools to gather evidence relating to a specific question in a known field of enquiry: the domain is known beforehand, and the resulting visualisation marshals visual evidence rhetorically to prove the author's point.  By contrast, in the latter case a subject neophyte uses digital tools to discover first features of an unknown field of enquiry: not, ``what is the answer to this question?'' but rather ``what are the meaningful questions to ask?''.  The visualisations deployed in this quest are necessarily general-purpose - simple bar, line and scatter charts.  Uncharted caves are explored using a simple headlamp; only once we discover Lascaux do we bring in the laser show to convince others of the importance of what we have found.  Where an individual digital humanities tool or visualisation lies on this spectrum is an important question to answer.
+
+Second, to make a case for introducing data literacy, and experimentation with tools like these, into undergraduate education in the humanities.
+
+(2.1) Data literacy:
+
+(2.2) The pedagogical importance of playing with tools: the critical-information scholar Mark Ratto uses the term "critical making" the describe the ability of hands-on design practice to produce distinctive kinds of knowledge.  In the examples used here, we presented students with a historical institution (the Comédie Française) as an occasion, not merely for analysis, but for working through a problem via methods that aim to produce, even speculatively, a tool, a procedure, an artifact.  It is possible to discuss the history of the Comédie Française simply by way of assigning and discussing articles and book chapters--indeed, it is easier that way.  Discussing this history as a problem in data analysis creates an obstacle--a productive constraint--that may help us to produce new concepts or to think through old concepts in new ways.
+
+Third, I hope that this essay will encourage humanists who specialize in traditional methods of analysis to expand their repertoires to work on projects of this kind.  The humanities have much to contribute to the kind of world-building that computer science, in its push to develop tools and systems for managing information, has obsessively engaged in.  Our intellectual inheritance includes forms of theoretical and methodological expertise - the scholarly inheritance of a data-poor but meaning-rich materials - on which present computational methods have little purchase.  As we continue to engage with new waves of scholarship that bring new computational tools to the humanities, we will need to keep finding ways to balance digital methods with ``digital critique'': the computational analogue to our methodological scepticism, literary sensibility and temperamental openness to human experience and openness to interpretation and polysemy.  This will only happen if traditional humanists continue to work with data scientists, just as traditional humanists and critical-information experts worked together on this project.  I hope that the achievements and possibilities of the Comédie Française Registers Project will spur others to creative experimentation.
+
 
 \printbibliography
 
