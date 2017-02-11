@@ -1,8 +1,10 @@
+# a little carrot-and-stick...
+osascript -e "display notification \"$(detex -t main.tex | wc -w)\" with title \"Word Count @ $(date +'%H:%M')\""
+
 cd viz
 make default
 cd ..
 
-mkdir output
 rm -rf .tmp-compiling
 mkdir .tmp-compiling
 mkdir .tmp-compiling/viz
@@ -18,7 +20,7 @@ bibtex main
 pdflatex ../main.tex
 pdflatex ../main.tex
 
-cp main.pdf ../output
+cp main.pdf ..
 
 cd ..
 rm -rf .tmp-compiling

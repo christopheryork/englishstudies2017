@@ -19,14 +19,11 @@
 \usepackage[svgnames]{xcolor}									% Enabling colors by their 'svgnames'
 \usepackage[hang, small,labelfont=bf,up,textfont=it,up]{caption}	% Custom captions under/above floats
 \usepackage{pdfpages}
-\usepackage{subfig}													% Subfigures
-\usepackage{booktabs}												% Nicer tables
-\usepackage{fix-cm}													% Custom fontsizes
-
-\usepackage[utf8]{inputenc}                 % Unicode input
-
+\usepackage{fix-cm}													  % Custom fontsizes
+\usepackage[utf8]{inputenc}                   % Unicode input
 \usepackage{tcolorbox}
 \usepackage{enumitem}
+\usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
 
 %%% Custom sectioning (sectsty package)
 \usepackage{sectsty}													% Custom sectioning (see below)
@@ -38,6 +35,10 @@
 	\usefont{OT1}{phv}{b}{n}%										% bch-b-n: CharterBT-Bold font
 	}
 
+% custom framed box
+
+\newtcolorbox{framefloat}[1][!tb]{arc=0pt,outer arc=0pt,boxrule=0.4pt,
+  colframe=black,colback=white,float=#1}
 
 
 %%% Headers and footers
@@ -57,16 +58,6 @@
 \renewcommand{\footrulewidth}{0.4pt}
 
 
-
-%%% Creating an initial of the very first character of the content
-\usepackage{lettrine}
-\newcommand{\initial}[1]{%
-     \lettrine[lines=3,lhang=0.3,nindent=0em]{
-     				\color{DarkGoldenrod}
-     				{\textsf{#1}}}{}}
-
-
-
 \bibliography{main}
 
 
@@ -78,16 +69,17 @@
 										}
 %%begin novalidate
 \pretitle{\vspace{-30pt} \begin{flushleft} \HorRule
-				\fontsize{50}{50} \usefont{OT1}{phv}{b}{n} \color{DarkRed} \selectfont
+				\fontsize{30}{30} \usefont{OT1}{phv}{b}{n} \color{DarkRed} \selectfont
 				}
-\title{Exploratory data analytics for the Digital humanities}					% Title of your article goes here
+\title{Exploratory data analytics for the digital humanities}					% Title of your article goes here
 \posttitle{\par\end{flushleft}\vskip 0.5em}
 
 \preauthor{\begin{flushleft}
 					\large \lineskip 0.5em \usefont{OT1}{phv}{b}{sl} \color{DarkRed}}
 \author{Christopher York, }										% Author name goes here
 \postauthor{\footnotesize \usefont{OT1}{phv}{m}{sl} \color{Black}
-          Yale University 								  % Institution of author
+          Yale University \& MIT CFRP
+					\thanks{Many thanks to Elyse Graham for editorial advice and concluding suggestions.}
 					\par\end{flushleft}\HorRule}
 %%end novalidate
 \date{}																				% No date
@@ -99,7 +91,8 @@
 \maketitle
 \thispagestyle{fancy} 			% Enabling the custom headers/footers for the first page
 % The first character should be within \initial{}
-\initial{L}\textbf{orem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.}
+\noindent
+\textbf{Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.}
 
 \subsection*{The Comédie Française Registers Project}
 Boilerplate info on the CF and the CFRP: who, what, why, how.
@@ -148,16 +141,14 @@ The heatmap’s visual richness and usefulness for investigating authorial histo
 
 \begin{figure}
   \centering
-	\includegraphics[width=9.5in,angle=270]{viz/repertoire_by_season_all.pdf}
-	\caption{The complete CF repertory
-	         \newline
-	         (Limitations of a special-purpose visualisation)}
+	\includegraphics[width=9in,angle=270]{viz/repertoire_by_season_all.pdf}
+	\caption{Limitations of special-purpose visualisations: \\ Complete CF repertory arranged by year}
   \label{fig:heatmap_all}
 \end{figure}
 
 Perhaps more damning, the repertoire heatmap above is a special purpose visualisation, crafted to expose a fixed set of patterns but difficult to adapt to other categories of analysis.  Changing it to look at the genre of plays performed over time, or variations of what is played during a week, would basically require starting over with a novel programming task.  By contrast, during the process of exploratory data analysis, users are likely to want to experiment with many different aggregations and graphs in a short period of time—for example, to see ``were plays of a different genre performed in later decades?'' or ``were different weekdays associated with different genres?''  Despite involving the same variables—time and genre of play performed—these two questions lend themselves to different analyses and graphs.  This is because ``decade of performance'' is a linear and continuous aspect of the data, while ``weekday of performance'' is cyclical and discrete.
 
-\begin{tcolorbox}
+\begin{framefloat}
   \fontsize{9pt}{9pt}\selectfont
 	\begin{enumerate}[align=left]
 	  \item Voltaire: isolate all his comedies, or all his tragedies, across the six decades of his career at the CF. Compare attendance and receipt figures. Break that data down by decades, and compare pareterre totals in the 1730s and 1770s. Chart the days of the week on which his comedies were played across these decades versus days of the week for his tragedies. Analyze which plays the actors chose to accompany his comedies, versus which they chose to accompany his tragedies.
@@ -169,7 +160,7 @@ Perhaps more damning, the repertoire heatmap above is a special purpose visualis
 	  \item What is the relationship of number of attendees and box office receipts? Does higher attendance always mean greater revenues? If not, how do we analyze receipts across the period to understand what determined profitability? to determine popularity? Among these factors, what is the relative importance of day of the week? Plays being performed? First run of a play? Debut of a new actor or actress? King, Queen, or other luminary in the audience?
   \end{enumerate}
   \hfill —questions courtesy of Jeff Ravel (MIT)
-\end{tcolorbox}
+\end{framefloat}
 
 \subsection*{Goal and Design Constraints: General vs Special-Purpose Tools}
 
@@ -179,9 +170,18 @@ Doing so involves comparing any number of different aspects of the dataset in qu
 
 The tool works by progressive refinement of the dataset, to expose distributions of the data points across a number of dimensions (listed in the sidebar).  Let us follow the prior query through, to show how our student user might use the tool to explore the problem of determining the main authors in the Comédie-Française’s repertoire, their periods and relative importance.  To begin, our student would select an aggregate value of interest: for example, the number of performances; gross receipts; average price of tickets sold; or average receipts per night.
 
-\begin{tcolorbox}
+\begin{framefloat}
 	\fontsize{9pt}{9pt}\selectfont
   \begin{description}[noitemsep,align=left]
+
+		\item[Measures]
+			\item number of performances (evenings)
+			\item gross ticket receipts
+			\item mean ticket receipts per night
+			\item mean price per ticket sold
+			\item weighted ticket receipts
+
+    \vspace{10pt}
 		\item[Dimensions]
 			\item play
 			\item author
@@ -193,25 +193,19 @@ The tool works by progressive refinement of the dataset, to expose distributions
 			\item debut, reprise, firstrun, new actor/role
 			\item seating category
 
+    \hrulefill
 		\item[Facts]
 			\item date
 			\item number of tickets sold
 			\item price per ticket
-
-		\item[Measures]
-			\item number of nights / performances
-			\item gross ticket receipts
-			\item mean ticket receipts per night
-			\item mean price per ticket sold
-			\item weighted ticket receipts
   \end{description}
-\end{tcolorbox}
+\end{framefloat}
 
 As seen in the Tukey boxplot we considered first, number of performances is a good initial metric indicating the prominence of an author in the repertoire.  On choosing this, our student sees the entire dataset aggregated by number of nights performed: over the 114-year period covered by the dataset, the Comédie-Française performed 34,904 nights (figure \ref{fig:opening}).  At about 306 live evenings per year (34,904 / 114), this already gives some indication of the theater’s preternatural activity.  Was the Comédie Française pressed to maintain profitability by keeping its doors open and attendance consistently high, a stress familiar to 20th century theater owners?  Our student investigator does not know; but already a field of questions is opening up that supplements her initial interest in repertoire.  What role did prominent authors play in maintaining the Comédie Française’s yearly schedule?
 
 \begin{figure}
   \centering
-	\includegraphics[width=3.5in]{steps/opening.png}
+	\includegraphics[width=3.25in]{steps/opening.png}
 	\caption{}
 	\label{fig:opening}
 \end{figure}
@@ -220,23 +214,24 @@ Our student decides to take a quick look at how the number of performances varie
 
 \begin{figure}
   \centering
-	\includegraphics[width=3.5in]{steps/dimensions.png}
+	\includegraphics[width=3.25in]{steps/dimensions.png}
 	\caption{}
 	\label{fig:dimensions}
 \end{figure}
 
 \begin{figure}
   \centering
-	\includegraphics[width=3.5in]{steps/performances_by_decade.png}
+	\includegraphics[width=3.25in]{steps/performances_by_decade.png}
 	\caption{}
 	\label{fig:performances_by_decade}
 \end{figure}
 
 Seeing results in tabular form can be useful, particularly when one delves deep into a particular problem or research question.  A visual presentation gives more immediate meaning to the same set of numbers, however.  From here, we will follow the student as she does exploratory data visualisation using the tool’s graph component, which she accesses by choosing the leftmost results panel (figure \ref{fig:performances_by_decade_graph}).
+\todo[noline]{correct line graphs: 1790 datapoint is misleading because this decade includes fewer years.}
 
 \begin{figure}
   \centering
-	\includegraphics[width=3.5in]{steps/performances_by_decade_graph.png}
+	\includegraphics[width=3.25in]{steps/performances_by_decade_graph.png}
 	\caption{}
 	\label{fig:performances_by_decade_graph}
 \end{figure}
@@ -260,18 +255,18 @@ Visual inspection only conveys a rough sense of the historical distribution of p
 
 \begin{figure}
   \centering
-	\includegraphics[width=3.5in]{steps/sorted.png}
+	\includegraphics[width=3.25in]{steps/sorted.png}
 	\caption{}
 	\label{fig:sorted}
 \end{figure}
 
 One of the cardinal advantages of the Tukey boxplot, as we noted, lay in giving a sense both of absolute numbers of performances for each author, as well as how those numbers compared with the body of other authors in the repertoire.  While the table format, with fixed ordinal positions for rows and columns, cannot mimic this graphically, it can convey a sense of the importance of each value within the population of an entire row or column.  Doing this enables our student to compare the relative prominence of high-performed authors to each other, and to the entire population of authors per decade (step \ref{fig:percents}).  Here she sees her intuitions about the troupe’s dependence on Molière confirmed: fully 28\% of all nights through the run saw the performance of a Molière play (lower-right corner), as against 7.6\% of all nights for Voltaire.  More importantly, she now has a sense of the significance of Voltaire’s rise after 1750: in this and succeeding decades, between 14-16\% percent of all nights involved a performance of one of his plays.  However, decade by decade through Voltaire’s heyday, it becomes clear that Molière plays still formed a higher proportion of the repertoire.  Looking at the top-performed authors as a group makes this conservative phenomenon even further.  The top 6 authors appeared on fully 60-80\% of all nights!
-\marginpar{double check that this works with author-n}
+\todo{double check this works with author\_n}
 
 \begin{figure*}
   \centering
 	\includegraphics[width=7in]{steps/percents.png}
-	\caption{}
+	\caption{Per-author distribution of play performances, for each decade}
 	\label{fig:percents}
 \end{figure*}
 
@@ -279,14 +274,16 @@ Looking back at our student’s progress using cross-tabulations, it is clear he
 
 Shortcomings of the table format quickly appear, however, if our student moves from comparing authors performances by decade to each other, to comparing authors’ performances rates in one decade to those in others.  When, for example, was the peak in Comédie-Française performances and did it correlate with a particular author?  To begin looking at this question, the student changes the table above to order and calculate percentages within columns rather than rows (figure \ref{fig:percents-incoherent}).
 
-\begin{figure}
+\begin{figure*}
   \centering
-	\includegraphics[width=3.5in]{steps/percents-incoherent.png}
-	\caption{}
+	\includegraphics[width=7in]{steps/percents-incoherent.png}
+	\caption{Per-decade distribution of play performances, for each author}
 	\label{fig:percents-incoherent}
-\end{figure}
+\end{figure*}
 
-While the display conveys the information our student seeks—which decades saw the most open performances, broken down by author—it feels incoherent, because unlike ``author’s name'', ``time'' has a natural order and we expect to always see data presented in that order, even when seeking minima and maxima.
+While the display conveys the information our student seeks—which decades saw the most open performances, broken down by author—it feels incoherent, because unlike ``author’s name'', ``time'' has a natural order and we expect to always see data presented in that order, even when seeking minima and maxima.  In this case, a simple line or scatter graph (e.g. figure \ref{fig:performances_by_decade_graph}) immediately immediately draws the eye to high and low values, even though the computer has not been instructed to highlight them by sorting or special marks.  Clearly when exploring data in a continuous, ordered domain plots are more effective than tables of numbers: our student already noted the ease with which highs and lows can be read from a graph showing the per-decade count of evening performances (figure \ref{fig:performances_by_decade_graph}), as compared with the identical table (figure \ref{fig:performances_by_decade}).
+
+
 
 Discuss line graphs of tables, ordering and selection of top 10 items
 
@@ -318,14 +315,14 @@ The CFRP Crosstab’s calendar function leverages characteristic feature of the 
 
 \begin{figure}
   \centering
-	\includegraphics[width=3.5in]{steps/calendar-receipts.png}
+	\includegraphics[width=3.25in]{steps/calendar-receipts.png}
 	\caption{Daily receipts: All evenings}
 	\label{fig:calendar-receipts}
 \end{figure}
 
 \begin{figure}
   \centering
-	\includegraphics[width=3.5in]{steps/corneille-1680s-receipts.png}
+	\includegraphics[width=3.25in]{steps/corneille-1680s-receipts.png}
 	\caption{Daily receipts: Evenings when a play by Corneille was performed}
 	\label{fig:corneille-1680s-receipts}
 \end{figure}
