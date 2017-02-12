@@ -72,33 +72,60 @@
 				\fontsize{30}{30} \usefont{OT1}{phv}{b}{n} \color{DarkRed} \selectfont
 				}
 \title{Exploratory data analytics for the digital humanities}					% Title of your article goes here
-\posttitle{\par\end{flushleft}\vskip 0.5em}
+\posttitle{\end{flushleft}\vskip 0.5em}
 
 \preauthor{\begin{flushleft}
 					\large \lineskip 0.5em \usefont{OT1}{phv}{b}{sl} \color{DarkRed}}
 \author{Christopher York, }										% Author name goes here
 \postauthor{\footnotesize \usefont{OT1}{phv}{m}{sl} \color{Black}
           Yale University \& MIT CFRP
-					\thanks{Many thanks to Elyse Graham for editorial advice and concluding suggestions.}
-					\par\end{flushleft}\HorRule}
+					\thanks{Many thanks to Elyse Graham for editorial guidance and concluding suggestions.}
+					\end{flushleft}
+	\HorRule
+	\newline
+	\footnotesize
+In 2008 the Comédie Française, France's pre-eminent dramatic troupe and theater, embarked on an ambitious project to digitize its remarkable collection of ticket receipts dating from the theater's opening in 1680 to just after the French Revolution.  This paper describes the design and development of a general-purpose online data analytics tool to make meaning from the resulting database: its technical and theoretical underpinnings, its audience and constraints, user-base and expectations.
+	\HorRule}
 %%end novalidate
 \date{}																				% No date
-
-
 
 %%% Begin document
 \begin{document}
 \maketitle
 \thispagestyle{fancy} 			% Enabling the custom headers/footers for the first page
-% The first character should be within \initial{}
-\noindent
-\textbf{Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.}
 
 \subsection*{The Comédie Française Registers Project}
-Boilerplate info on the CF and the CFRP: who, what, why, how.
 
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies
+In 2008 the Comédie Française, France's pre-eminent dramatic troupe and theater, embarked on an ambitious project to digitize its remarkable collection of ticket receipts dating from the theater's opening in 1680 to just after the French Revolution.  This paper describes the design and development of a general-purpose online data analytics tool to make meaning from the resulting database: its technical and theoretical underpinnings, its audience and constraints, user-base and expectations.
 
+\begin{figure}
+  \centering
+  \includegraphics[width=2.7in]{steps/register-example.png}
+	\caption{An example register page from the Comédie Française.}
+  \label{fig:register_example}
+  \includegraphics[width=3.25in]{steps/register-example-digital.png}
+	\caption{The corresponding CFRP database record.}
+  \label{fig:register_example_digital}
+\end{figure}
+
+The Comédie Française had exclusive rights to perform works by Molière, Corneille, Racine, Voltaire, Beaumarchais and other French-language playwrights through an era of critical change in Early Modern France.  Consequently, its archives provide a unique lens into the development of both French theater and French society.  In the daily registers, a member of the troupe recorded the date, bill of plays performed, and itemized how many tickets sold at each price.  This information forms the core of the Comédie Française dataset (see figures \ref{fig:register_example} and \ref{fig:register_example_digital}), and is immediately suggestive to readers with  dramatic or historical interests.  Not only can one trace the growth and popularity - on a daily, play-by-play basis - of the authors who came to constitute the French literary canon; the presence of receipts amounts and numbers enticingly suggests it might be possible to draw a picture of their audience: its demography, temperament and changing political concerns.
+
+How did certain authors and plays become central to French thought and identity?  Did the popularity of Molière, Racine and Corneille wane as new authors enjoyed a wave of popularity begining in 1740?  Who went to the theater in Early Modern France: soldiers, aristocrats, laborers, women, royalty, merchants?  How did members of these afford their entertainment, and how did those economic dynamics affect institutional decisions made by the Comédie Française?  While data from the registers cannot definitively answer such questions, it touches on all of them and can provide documentary support for arguments pertaining to genre, race, class, gender, taste and politics.%
+\footnote{For context on Early Modern French theater and its development, see \cite{HOWARTH:1997}. For interpretation of the Comédie Française registers, completed before the CFRP project see works by Jan Clarke, esp. \cite{CLARKE:2001}.}
+
+\begin{framefloat}
+  \fontsize{9pt}{9pt}\selectfont
+	\begin{enumerate}[align=left]
+	  \item Voltaire: isolate all his comedies, or all his tragedies, across the six decades of his career at the CF. Compare attendance and receipt figures. Break that data down by decades, and compare pareterre totals in the 1730s and 1770s. Chart the days of the week on which his comedies were played across these decades versus days of the week for his tragedies. Analyze which plays the actors chose to accompany his comedies, versus which they chose to accompany his tragedies.
+
+		\item Search on attendance figures for Racine and Corneille's tragedies from 1680 through 1793, then compare them to similar figures for Voltaire's tragedies. Does Voltaire's rising popularity change the status of the older classical tragic authors in the repertory over the eighteenth century?
+
+	  \item Study parterre attendance across the 113 years. What are the highs and the lows? How do the figures change as the troupe changes performance venues? Is there a correlation between parterre attendance (cheapest tickets), and first loge and stage seats (most expensive)? Is it an inverse correlation? Do the figures correlate to genre of the play being performed?
+
+	  \item What is the relationship of number of attendees and box office receipts? Does higher attendance always mean greater revenues? If not, how do we analyze receipts across the period to understand what determined profitability? to determine popularity? Among these factors, what is the relative importance of day of the week? Plays being performed? First run of a play? Debut of a new actor or actress? King, Queen, or other luminary in the audience?
+  \end{enumerate}
+  \hfill —research questions courtesy of Jeff Ravel (MIT)
+\end{framefloat}
 
 \subsection*{Exploratory Data Analysis and Data Visualization}
 
@@ -117,7 +144,7 @@ Giving a sense of the overall landscape, while also providing opportunities to d
 
 Before we delve into description of the CFRP analytics tool, let’s pause first to consider potential visual displays for exploratory data analysis, so as to have a sense of the design space. Suppose our student has decided her best way into the Comédie-Française Registers data is to look at authors.  What sort of visualization can answer these questions: Which were the most prominent and influential?  How did minor authors fare in the repertoire?  What were the major periods, and how often did authors remain popular across periods?
 
-When Tukey proposed exploratory data analysis as a field, he envisioned using visuals based on descriptive statistics as the primary entry point to new datasets.  For example, our student could start with the Tukey boxplot below, which uses the number of evenings the Comédie Française performed a play by the given author as a rough proxy for authorial importance.  Despite its visual spareness, the graph is information-rich, sketching the outlines of an theater troupe that experimented restlessly with new authors’ work but viciously dispatched unsuccessful ones after a few nights of poor performance; all the while staging works by the most successful authors over and over again. Of the 314 non-anonymous authors or co-author teams whose work played at the Comédie-Française between 1680-1793, fully 25\% had work in-theater for only 1 to 5 evenings (lower box edge).  Half of all authors saw 17 or fewer performances (median, the box’s center line), and 75\% of authors’ work had less than a full season’s time on the stage.  Clearly, success at the Comédie-Française was a vanishingly rare phenomenon.
+When Tukey proposed exploratory data analysis as a field, he envisioned using visuals based on descriptive statistics as the primary entry point to new datasets.  For example, our student could start with the Tukey boxplot in figure \ref{fig:tukey_boxplot}, which uses the number of evenings the Comédie Française performed a play by the given author as a rough proxy for authorial importance.  Despite its visual spareness, the graph is information-rich, sketching the outlines of an theater troupe that experimented restlessly with new authors’ work but viciously dispatched unsuccessful ones after a few nights of poor performance; all the while staging works by the most successful authors over and over again. Of the 314 non-anonymous authors or co-author teams whose work played at the Comédie-Française between 1680-1793, fully 25\% had work in-theater for only 1 to 5 evenings (lower box edge).  Half of all authors saw 17 or fewer performances (median, the box’s center line), and 75\% of authors’ work had less than a full season’s time on the stage.  Clearly, success at the Comédie-Française was a vanishingly rare phenomenon.
 
 At the upper end of the scale, Tukey’s visualisation singles out some outlier authors whose work was spectacularly successful.  Our student, while perhaps prepared for Molière’s pre-eminence, might be struck by the degree to which he dominated the Comédie-Française’s daily repertoire (note the exponential scale: Molière was performed fully twice as many nights as next-in-line comedian of manners Florent Carton Dancourt).
 
@@ -142,25 +169,13 @@ The heatmap’s visual richness and usefulness for investigating authorial histo
 \begin{figure}
   \centering
 	\includegraphics[width=9in,angle=270]{viz/repertoire_by_season_all.pdf}
-	\caption{Limitations of special-purpose visualisations: \\ Complete CF repertory arranged by year}
+	\caption{\color{red}Complete CF repertory arranged by year
+	         \newline
+					 \color{black}(Ineffective views of data provided for comparison will be captioned in red.)}
   \label{fig:heatmap_all}
 \end{figure}
 
-Perhaps more damning, the repertoire heatmap above is a special purpose visualisation, crafted to expose a fixed set of patterns but difficult to adapt to other categories of analysis.  Changing it to look at the genre of plays performed over time, or variations of what is played during a week, would basically require starting over with a novel programming task.  By contrast, during the process of exploratory data analysis, users are likely to want to experiment with many different aggregations and graphs in a short period of time—for example, to see ``were plays of a different genre performed in later decades?'' or ``were different weekdays associated with different genres?''  Despite involving the same variables—time and genre of play performed—these two questions lend themselves to different analyses and graphs.  This is because ``decade of performance'' is a linear and continuous aspect of the data, while ``weekday of performance'' is cyclical and discrete.
-
-\begin{framefloat}
-  \fontsize{9pt}{9pt}\selectfont
-	\begin{enumerate}[align=left]
-	  \item Voltaire: isolate all his comedies, or all his tragedies, across the six decades of his career at the CF. Compare attendance and receipt figures. Break that data down by decades, and compare pareterre totals in the 1730s and 1770s. Chart the days of the week on which his comedies were played across these decades versus days of the week for his tragedies. Analyze which plays the actors chose to accompany his comedies, versus which they chose to accompany his tragedies.
-
-		\item Search on attendance figures for Racine and Corneille's tragedies from 1680 through 1793, then compare them to similar figures for Voltaire's tragedies. Does Voltaire's rising popularity change the status of the older classical tragic authors in the repertory over the eighteenth century?
-
-	  \item Study parterre attendance across the 113 years. What are the highs and the lows? How do the figures change as the troupe changes performance venues? Is there a correlation between parterre attendance (cheapest tickets), and first loge and stage seats (most expensive)? Is it an inverse correlation? Do the figures correlate to genre of the play being performed?
-
-	  \item What is the relationship of number of attendees and box office receipts? Does higher attendance always mean greater revenues? If not, how do we analyze receipts across the period to understand what determined profitability? to determine popularity? Among these factors, what is the relative importance of day of the week? Plays being performed? First run of a play? Debut of a new actor or actress? King, Queen, or other luminary in the audience?
-  \end{enumerate}
-  \hfill —questions courtesy of Jeff Ravel (MIT)
-\end{framefloat}
+Perhaps more damning, the repertoire heatmap in figure \ref{fig:heatmap} is a special purpose visualisation, crafted to expose a fixed set of patterns but difficult to adapt to other categories of analysis.  Changing it to look at the genre of plays performed over time, or variations of what is played during a week, would basically require starting over with a novel programming task.  By contrast, during the process of exploratory data analysis, users are likely to want to experiment with many different aggregations and graphs in a short period of time—for example, to see ``were plays of a different genre performed in later decades?'' or ``were different weekdays associated with different genres?''  Despite involving the same variables—time and genre of play performed—these two questions lend themselves to different analyses and graphs.  This is because ``decade of performance'' is a linear and continuous aspect of the data, while ``weekday of performance'' is cyclical and discrete.
 
 \subsection*{Goal and Design Constraints: General vs Special-Purpose Tools}
 
@@ -171,7 +186,7 @@ Doing so involves comparing any number of different aspects of the dataset in qu
 The tool works by progressive refinement of the dataset, to expose distributions of the data points across a number of dimensions (listed in the sidebar).  Let us follow the prior query through, to show how our student user might use the tool to explore the problem of determining the main authors in the Comédie-Française’s repertoire, their periods and relative importance.  To begin, our student would select an aggregate value of interest: for example, the number of performances; gross receipts; average price of tickets sold; or average receipts per night.
 
 \begin{framefloat}
-	\fontsize{9pt}{9pt}\selectfont
+	\fontsize{8pt}{8pt}\selectfont
   \begin{description}[noitemsep,align=left]
 
 		\item[Measures]
@@ -272,16 +287,19 @@ One of the cardinal advantages of the Tukey boxplot, as we noted, lay in giving 
 
 Looking back at our student’s progress using cross-tabulations, it is clear her insights are built on three vital features.  First, the ability to divide the dataset by more than one dimension (in this case, by author and time rather than just author).  Second, sorting from high-to-low and low-to-high values on an axis make it easy to locate the top and bottom performers (these are generally Tukey’s statistically-significant outliers).  This enabled our student to identify notable authors without having to scan the entire table. Third, showing computed aggregates ranked as proportion of a row or column of the data gives a sense of how important each value is vis-a-vis its neighbors.  Hence our student could judge the relative prominence not only of Voltaire to Molière, but also each of these authors compared with the unseen collection of all Comédie-Française authors.
 
-Shortcomings of the table format quickly appear, however, if our student moves from comparing authors performances by decade to each other, to comparing authors’ performances rates in one decade to those in others.  When, for example, was the peak in Comédie-Française performances and did it correlate with a particular author?  To begin looking at this question, the student changes the table above to order and calculate percentages within columns rather than rows (figure \ref{fig:percents-incoherent}).
+Shortcomings of the table format quickly appear, however, if our student moves from comparing authors performances by decade to each other, to comparing authors’ performances rates in one decade to those in other decades.  When, for example, was the peak in Comédie-Française performances and did it correlate with a particular author?  To begin looking at this question, the student changes the table above to order and calculate percentages within columns rather than rows (figure \ref{fig:stitched-decades-table}).
+\todo[noline]{table should show performance count, for comparison with figure \ref{fig:percents}.}
 
 \begin{figure*}
   \centering
-	\includegraphics[width=7in]{steps/percents-incoherent.png}
-	\caption{Per-decade distribution of play performances, for each author}
-	\label{fig:percents-incoherent}
+	\includegraphics[width=7in]{steps/stitched-decades-table.png}
+	\caption{\color{red}Per-decade distribution of play receipts, for each author}
+	\label{fig:stitched-decades-table}
 \end{figure*}
 
-While the display conveys the information our student seeks—which decades saw the most open performances, broken down by author—it feels incoherent, because unlike ``author’s name'', ``time'' has a natural order and we expect to always see data presented in that order, even when seeking minima and maxima.  In this case, a simple line or scatter graph (e.g. figure \ref{fig:performances_by_decade_graph}) immediately immediately draws the eye to high and low values, even though the computer has not been instructed to highlight them by sorting or special marks.  Clearly when exploring data in a continuous, ordered domain plots are more effective than tables of numbers: our student already noted the ease with which highs and lows can be read from a graph showing the per-decade count of evening performances (figure \ref{fig:performances_by_decade_graph}), as compared with the identical table (figure \ref{fig:performances_by_decade}).
+While the display conveys the information our student seeks—which decades saw the most open performances, broken down by author—it feels incoherent, because unlike ``author’s name'', ``time'' has a natural order and we expect to always see data presented in that order, even when seeking minima and maxima.  Ordering clearly matches the rising trend of more and more performances in each successive decade from 1740 to 1780 (see the far right column): however, we still expect to see decades plotted in chronological order so we can seek limits visually.
+
+In this case, a simple line or scatter graph (e.g. figure \ref{fig:performances_by_decade_graph}) immediately immediately draws the eye to high and low values, even though the computer has not been instructed to highlight them by sorting or special marks.  Clearly when exploring data in a continuous, ordered domain plots are more effective than tables of numbers: our student already noted the ease with which highs and lows can be read from a graph showing the per-decade count of evening performances (figure \ref{fig:performances_by_decade_graph}), as compared with the identical table (figure \ref{fig:performances_by_decade}).
 
 
 
