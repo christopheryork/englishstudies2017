@@ -303,36 +303,42 @@ While the display conveys the information our student seeks—which decades saw 
 
 In this case, a simple line or scatter graph (e.g. figure \ref{fig:performances_by_decade_graph}) immediately immediately draws the eye to high and low values, even though the computer has not been instructed to highlight them by sorting or special marks.  Clearly when exploring data in a continuous, ordered domain plots are more effective than tables of numbers: our student already noted the ease with which highs and lows can be read from a graph showing the per-decade count of evening performances (figure \ref{fig:performances_by_decade_graph}), as compared with the identical table (figure \ref{fig:performances_by_decade}).
 
+However, if our student divides this graph of total performances by author, in an attempt to explore the prominence of individual authors across each decade of the Comédie Française's history, she obtains a result whose visual density clearly makes for sub-optimal data analysis (figure \ref{fig:author-performances-all}).  Some suggestive characteristics that we explored using the Tukey box-plot (c.f. figure \ref{fig:tukey_boxplot}) are  present: clearly one author dominated the repertoire in every season (blue line at top), while others seemingly grew in popularity to become box-office standards (red), sometimes entering this trajectory well into the Comédie Française's history (green).  Against these statistically-significant and highly-successful outliers, we see the main body of authors below, most of them performed under 100 times a season.  Finally, one of the most striking aspects of the Comédie Française's repertoire - the prevalence of authors whose plays saw under 10 performances - is completely hidden, due to the sheer density of lines at the bottom of the graph.
 
-
-
-Discuss line graphs of tables, ordering and selection of top 10 items
-
-Discuss future improvements:  include quantile points
-
+For the purposes of exploratory data analysis, it is useful to highlight top- and bottom-scoring trends and leave the overall distribution for later investigation.  (For example, a useful tool for working with the Comédie Française dataset should immediately expose Molière's dominance of the daily repertoire, even while allowing students to drill down to less-succesful authors).  Figure \ref{fig:top-author-performances} illustrates this approach, as deployed by the CFRP analytics tool: from figure \ref{fig:top-author-performances-all}, it graphs only the lines with the top 10 highest points, which it then labels in order.  The result gives a clear picture of which were the most prominent authors, together with the personal career trajectory for each: the red, blue and green outliers noted above are of course Molière, Dancourt and Voltaire.  While not as graphically rich as a purpose-built visualisation such as figure \ref{fig:heatmap}, for the purposes of interactive data analysis such a graph handily balances legibility with flexibility and utility.  From here our student might drill down to explore the history of a specific author; or re-sort to look at the 10 least frequently performed authors; or switch to look at another variable such as genre or ticket receipts.
 
 \begin{figure*}
   \centering
 	\includegraphics[width=7in]{steps/author-performances-all.png}
-	\caption{}
+	\caption{\color{red}A plot that illustrates the utility of highlighting outlying high values, but obscures the overall distribution of the data.}
 	\label{fig:author-performances-all}
 \end{figure*}
 
 \begin{figure*}
   \centering
 	\includegraphics[width=7in]{steps/top-author-performances.png}
-	\caption{}
+	\caption{Limiting the data graphed to the top or bottom ten lines (equivalent to sorting the CFRP crosstab table) allows users to clearly identify statistically-siginificant outliers in data.}
 	\label{fig:top-author-performances}
 \end{figure*}
+
+Thus far, most of the challenges our student faced while surveying the landscape of the Comédie Française database could be termed "descriptive statistics": identifying which are the relevant variables to explore, where the outlier datapoints lie and what the overall distribution of data suggests.  In addition to tackling these problems in research methodology, tools for working with digital humanities datasets must address the full spectrum of interpretive questions that lie at the core of traditional humanities practice.  For example, let us say our student, having explored some of the authorial patterns noted above, begins to wonder if the most-performed authors also constituted the bread-and-butter of the Comédie Française's box office takings.  Did the troupe use performances of plays by established authors to bankroll more speculative or ambitious plays by unknown authors?  Was there a particular season of the year, or day of the week that was particularly lucrative, and why?  Were some authors particularly lucrative, or particularly disastrous?
+
+To dig into these questions, our student switches from looking at the number of performances by author, to gross ticket sales by author (figure \ref{fig:top-author-receipts}).  This graph tells a cautionary tale for the digital humanities, because it is so suggestive while being neither entirely compromised or self-evidently true.  Most strikingly, our student might note Voltaire's meteoric profitability after 1740 -- far out of proportion to the rise in his plays as a proportion of the number of performances by the Comédie Française troupe.  However, economic historians will already have sounded a note of caution: nominal livres earned in 1700 cannot be compared one-to-one to livres in 1760, as the value of the French currency fluctuated throughout time (as did the purchasing power of individual audience members).  So the student cannot conclude that Voltaire "earned" more for the Comédie Française in 1760 than Molière did in 1700-as the graph's scale cannot be compared horizontally-she can still usefully note that there was a moment when Voltaire's plays became more lucrative than those of all other authors (because values CAN be compared vertically, i.e. synchronically).
+
+
+
+
+
+
 
 \begin{figure*}
   \centering
 	\includegraphics[width=7in]{steps/top-author-receipts-nominal.png}
-	\caption{}
+	\caption{Nominal receipts per decade: the Comédie Française's most lucrative playwrights}
 	\label{fig:top-author-receipts}
 \end{figure*}
 
-[ Exposing important features of the statistical landscape: top-n peaks versus Tukey’s boxplot (figure \ref{fig:tukey_boxplot})
+[ Futures: streamgraph? ]
 
 \subsection*{Drill-down: calendar}
 
