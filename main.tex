@@ -101,7 +101,7 @@ In 2008 the Comédie Française, France's pre-eminent dramatic troupe and theate
 \begin{figure}
   \centering
   \includegraphics[width=2.7in]{steps/register-example.png}
-	\caption{An example register page from the Comédie Française.}
+	\caption{A register page from the Comédie Française.}
   \label{fig:register_example}
   \includegraphics[width=3.25in]{steps/register-example-digital.png}
 	\caption{The corresponding CFRP database record.}
@@ -124,12 +124,14 @@ How did certain authors and plays become central to French thought and identity?
 
 	  \item What is the relationship of number of attendees and box office receipts? Does higher attendance always mean greater revenues? If not, how do we analyze receipts across the period to understand what determined profitability? to determine popularity? Among these factors, what is the relative importance of day of the week? Plays being performed? First run of a play? Debut of a new actor or actress? King, Queen, or other luminary in the audience?
   \end{enumerate}
-  \hfill —research questions courtesy of Jeff Ravel (MIT)
+  \hfill —example use cases courtesy of Jeff Ravel (MIT)
 \end{framefloat}
+
+Digitising sources and constructing a database are only the first of many steps that must be taken to answer such questions.  Certainly, CFRP's online search interface facilitates research by linking each register page to a table of authorities so we know which authors were performed on a given night, together with other play metadata such as genre and number of acts (\ref{fig:register_example_digital} - NB that register pages themselves only note the play title and number of tickets sold in each section).  However, it is clear the Comédie Française sources are data-rich in aggregate and -poor individually.  The ideal digital research tool would allow users to ``slide and dice'' the dataset, aggregating results from different perspectives to examine meaningful cross-sections for correspondances and statistical patterns.  Ideally, users could explore these cross-sections using visualisations; ideally, it would be hosted online, general-purpose so it can address a range of research questions; and usable by neophytes in addition to seasoned data analysts.
 
 \subsection*{Exploratory Data Analysis and Data Visualization}
 
-Imagine a student, perhaps in an undergraduate class on theater history, who uses the tool to explore the Comédie-Francaise Registers dataset while writing a paper. The student may have some background knowledge from an introductory lecture.  She knows that Louis XIV issued a royal decree founding the Comédie-Française in August 1680, that together with the Comédie Italienne and the Opéra the troupe occupied a central place in French stage tradition, closely associated with the foundational figures of Molière and Racine, and notable for its close association with the French court.  She may have privately noted a contrast between English Restoration theater’s fragmentation and the Comédie-Française’s remarkable institutional persistence and continuity, offering performances every season from founding, throughout the upheaval of the French Revolution and into the 21st century.
+Imagine a student, perhaps in an undergraduate class on theater history, who uses an analytics tool to explore the Comédie-Francaise Registers dataset while writing a paper. The student may have some background knowledge from an introductory lecture.  She knows that Louis XIV issued a royal decree founding the Comédie-Française in August 1680, that together with the Comédie Italienne and the Opéra the troupe occupied a central place in French stage tradition, closely associated with the foundational figures of Molière and Racine, and notable for its close association with the French court.  She may have privately noted a contrast between English Restoration theater’s fragmentation and the Comédie-Française’s remarkable institutional persistence and continuity, offering performances every season from founding, throughout the upheaval of the French Revolution and into the 21st century.
 
 However, beyond this rough outline the overall shape of the Comédie-Française Registers dataset will be completely unclear to a newcomer like our hypothetical student.  Which were the prominent authors and plays? Were ticket sales consistent across the years?  Did plays stay in the repertory, or did it change every year?  What dates did the theater season run?  Which plays were typically performed together in an evening?
 
@@ -185,37 +187,6 @@ Doing so involves comparing any number of different aspects of the dataset in qu
 
 The tool works by progressive refinement of the dataset, to expose distributions of the data points across a number of dimensions (listed in the sidebar).  Let us follow the prior query through, to show how our student user might use the tool to explore the problem of determining the main authors in the Comédie-Française’s repertoire, their periods and relative importance.  To begin, our student would select an aggregate value of interest: for example, the number of performances; gross receipts; average price of tickets sold; or average receipts per night.
 
-\begin{framefloat}
-	\fontsize{8pt}{8pt}\selectfont
-  \begin{description}[noitemsep,align=left]
-
-		\item[Measures]
-			\item number of performances (evenings)
-			\item gross ticket receipts
-			\item mean ticket receipts per night
-			\item mean price per ticket sold
-			\item weighted ticket receipts
-
-    \vspace{10pt}
-		\item[Dimensions]
-			\item play
-			\item author
-			\item title
-			\item acts
-			\item genre
-			\item style: prose or verse
-			\item performance
-			\item debut, reprise, firstrun, new actor/role
-			\item seating category
-
-    \hrulefill
-		\item[Facts]
-			\item date
-			\item number of tickets sold
-			\item price per ticket
-  \end{description}
-\end{framefloat}
-
 As seen in the Tukey boxplot we considered first, number of performances is a good initial metric indicating the prominence of an author in the repertoire.  On choosing this, our student sees the entire dataset aggregated by number of nights performed: over the 114-year period covered by the dataset, the Comédie-Française performed 34,904 nights (figure \ref{fig:opening}).  At about 306 live evenings per year (34,904 / 114), this already gives some indication of the theater’s preternatural activity.  Was the Comédie Française pressed to maintain profitability by keeping its doors open and attendance consistently high, a stress familiar to 20th century theater owners?  Our student investigator does not know; but already a field of questions is opening up that supplements her initial interest in repertoire.  What role did prominent authors play in maintaining the Comédie Française’s yearly schedule?
 
 \begin{figure}
@@ -255,6 +226,37 @@ The graph of number of performances by decade is immediately more suggestive tha
 
 Perhaps this question will become clearer as our student pursues her original interest in the Comédie Française’s prominent authors.  She chooses to divide the current query on performance evenings per decade further, this time by the authors of the plays performed.
 
+\begin{framefloat}[b]
+	\fontsize{8pt}{8pt}\selectfont
+  \begin{description}[noitemsep,align=left]
+
+		\item[Measures]
+			\item number of performances (evenings)
+			\item gross ticket receipts
+			\item mean ticket receipts per night
+			\item mean price per ticket sold
+			\item weighted ticket receipts
+
+    \vspace{10pt}
+		\item[Dimensions]
+			\item play
+			\item author
+			\item title
+			\item acts
+			\item genre
+			\item style: prose or verse
+			\item performance
+			\item debut, reprise, firstrun, new actor/role
+			\item seating category
+
+    \hrulefill
+		\item[Facts]
+			\item date
+			\item number of tickets sold
+			\item price per ticket
+  \end{description}
+\end{framefloat}
+
 She chooses the default option for ``author'' (author\_n, explained further below) in the table’s columns.  This generates a table of number of performances for each author, divided by decade.  Because there are 314 columns in this table, it is excerpted in figure \ref{fig:stitched-author-table}.
 
 \begin{figure*}
@@ -293,7 +295,7 @@ Shortcomings of the table format quickly appear, however, if our student moves f
 \begin{figure*}
   \centering
 	\includegraphics[width=7in]{steps/stitched-decades-table.png}
-	\caption{\color{red}Per-decade distribution of play receipts, for each author}
+	\caption{\color{red}Per-decade distribution of plays performed, for each author}
 	\label{fig:stitched-decades-table}
 \end{figure*}
 
@@ -303,9 +305,18 @@ In this case, a simple line or scatter graph (e.g. figure \ref{fig:performances_
 
 
 
+
 Discuss line graphs of tables, ordering and selection of top 10 items
 
 Discuss future improvements:  include quantile points
+
+
+\begin{figure*}
+  \centering
+	\includegraphics[width=7in]{steps/author-performances-all.png}
+	\caption{}
+	\label{fig:author-performances-all}
+\end{figure*}
 
 \begin{figure*}
   \centering
@@ -316,7 +327,7 @@ Discuss future improvements:  include quantile points
 
 \begin{figure*}
   \centering
-	\includegraphics[width=7in]{steps/top-author-receipts.png}
+	\includegraphics[width=7in]{steps/top-author-receipts-nominal.png}
 	\caption{}
 	\label{fig:top-author-receipts}
 \end{figure*}
