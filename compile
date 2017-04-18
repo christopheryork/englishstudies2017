@@ -15,12 +15,15 @@ cp ../main.bib .
 cp ../viz/*.pdf viz/
 cp ../steps/* steps/
 
-pdflatex ../main.tex
+pdflatex -recorder ../main.tex
 bibtex main
-pdflatex ../main.tex
-pdflatex ../main.tex
+pdflatex -recorder ../main.tex
+pdflatex -recorder ../main.tex
 
 cp main.pdf ..
+
+# parse results of \listfiles and generate links to the raw source files in github
+cat main.log | grep '^\(viz\|steps\)' | sed 's|^|https://github.com/christopheryork/englishstudies2017/raw/master/|' | nl -nrz -w2 > ../figures.txt
 
 cd ..
 rm -rf .tmp-compiling
