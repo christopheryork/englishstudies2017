@@ -1,21 +1,21 @@
-     1	https://github.com/christopheryork/englishstudies2017/blob/master/steps/register-example.jpg
-     2	https://github.com/christopheryork/englishstudies2017/blob/master/steps/register-example-digital.png
-     3	https://github.com/christopheryork/englishstudies2017/blob/master/viz/author_performances.pdf
-     4	https://github.com/christopheryork/englishstudies2017/blob/master/viz/repertoire_by_season.pdf
-     5	https://github.com/christopheryork/englishstudies2017/blob/master/viz/repertoire_by_season_all.pdf
-     6	https://github.com/christopheryork/englishstudies2017/blob/master/steps/opening.png
-     7	https://github.com/christopheryork/englishstudies2017/blob/master/steps/dimensions.png
-     8	https://github.com/christopheryork/englishstudies2017/blob/master/steps/performances_by_decade.png
-     9	https://github.com/christopheryork/englishstudies2017/blob/master/steps/performances_by_decade_graph.png
-    10	https://github.com/christopheryork/englishstudies2017/blob/master/steps/stitched-author-table.png
-    11	https://github.com/christopheryork/englishstudies2017/blob/master/steps/sorted.png
-    12	https://github.com/christopheryork/englishstudies2017/blob/master/steps/percents.png
-    13	https://github.com/christopheryork/englishstudies2017/blob/master/steps/stitched-decades-table.png
-    14	https://github.com/christopheryork/englishstudies2017/blob/master/steps/author-performances-all.png
-    15	https://github.com/christopheryork/englishstudies2017/blob/master/steps/top-author-performances.png
-    16	https://github.com/christopheryork/englishstudies2017/blob/master/steps/top-author-receipts-nominal.png
-    17	https://github.com/christopheryork/englishstudies2017/blob/master/steps/top-author-receipts-real.png
-    18	https://github.com/christopheryork/englishstudies2017/blob/master/steps/calendar-receipts.png
-    19	https://github.com/christopheryork/englishstudies2017/blob/master/steps/register-image-corneille.png
-    20	https://github.com/christopheryork/englishstudies2017/blob/master/steps/comedies-calendar.png
-    21	https://github.com/christopheryork/englishstudies2017/blob/master/steps/tragedies-calendar.png
+01	https://github.com/christopheryork/englishstudies2017/raw/master/steps/register-example.jpg
+02	https://github.com/christopheryork/englishstudies2017/raw/master/steps/register-example-digital.png
+03	https://github.com/christopheryork/englishstudies2017/raw/master/viz/author_performances.pdf
+04	https://github.com/christopheryork/englishstudies2017/raw/master/viz/repertoire_by_season.pdf
+05	https://github.com/christopheryork/englishstudies2017/raw/master/viz/repertoire_by_season_all.pdf
+06	https://github.com/christopheryork/englishstudies2017/raw/master/steps/opening.png
+07	https://github.com/christopheryork/englishstudies2017/raw/master/steps/dimensions.png
+08	https://github.com/christopheryork/englishstudies2017/raw/master/steps/performances_by_decade.png
+09	https://github.com/christopheryork/englishstudies2017/raw/master/steps/performances_by_decade_graph.png
+10	https://github.com/christopheryork/englishstudies2017/raw/master/steps/stitched-author-table.png
+11	https://github.com/christopheryork/englishstudies2017/raw/master/steps/sorted.png
+12	https://github.com/christopheryork/englishstudies2017/raw/master/steps/percents.png
+13	https://github.com/christopheryork/englishstudies2017/raw/master/steps/stitched-decades-table.png
+14	https://github.com/christopheryork/englishstudies2017/raw/master/steps/author-performances-all.png
+15	https://github.com/christopheryork/englishstudies2017/raw/master/steps/top-author-performances.png
+16	https://github.com/christopheryork/englishstudies2017/raw/master/steps/top-author-receipts-nominal.png
+17	https://github.com/christopheryork/englishstudies2017/raw/master/steps/top-author-receipts-real.png
+18	https://github.com/christopheryork/englishstudies2017/raw/master/steps/calendar-receipts.png
+19	https://github.com/christopheryork/englishstudies2017/raw/master/steps/register-image-corneille.png
+20	https://github.com/christopheryork/englishstudies2017/raw/master/steps/comedies-calendar.png
+21	https://github.com/christopheryork/englishstudies2017/raw/master/steps/tragedies-calendar.png
